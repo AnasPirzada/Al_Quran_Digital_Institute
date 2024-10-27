@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const navLinks = [
@@ -9,12 +10,12 @@ const navLinks = [
   { title: "Pricing", url: "/pricing" },
   { title: "Contact Us", url: "/contact" },
   { title: "FAQs", url: "/faqs" },
-  { title: "Blogs", url: "/blogs" },
+  { title: "Blogs", url: "" },
 ];
 
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
-  const [activeLink, setActiveLink] = useState(""); // Track active link
+  const [activeLink, setActiveLink] = useState("");
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -22,7 +23,7 @@ function Navbar() {
 
   const handleSetActive = (link) => {
     setActiveLink(link);
-    setShowModal(false); // Close modal after clicking a link
+    setShowModal(false);
   };
 
   const modalVariants = {
@@ -55,17 +56,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white py-4 px-4 shadow-md sticky top-0 z-50 text-nowrap">
+    <nav className="bg-white py-4 px-4 shadow-md sticky top-0 z-50 text-nowrap ">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
-        <img src="/Logo.svg" alt="" />
+        <img src="/Logo.svg" alt="Logo" />
 
         {/* Navbar Links */}
         <ul className="hidden lg:flex space-x-6 items-center">
           {navLinks.map((link) => (
-            <li key={link.title}>
-              <a
-                href={link.url}
+            <Link to={link.url} key={link.title}>
+              <li
                 onClick={() => handleSetActive(link.title)}
                 className={`${
                   activeLink === link.title
@@ -74,8 +74,8 @@ function Navbar() {
                 } text-sm hover:text-black transition-all duration-300`}
               >
                 {link.title}
-              </a>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
 
@@ -115,20 +115,16 @@ function Navbar() {
               exit="exit"
             >
               <ul className="flex flex-col items-center gap-8">
-                {navLinks.map((link, index) => (
-                  <motion.li
-                    key={index}
-                    className={`${
-                      activeLink === link.title
-                        ? "text-black font-semibold"
-                        : "text-gray-500"
-                    } text-xl`}
-                    variants={linkItemVariants}
-                  >
+                {navLinks.map((link) => (
+                  <motion.li key={link.title} variants={linkItemVariants}>
                     <a
                       href={link.url}
                       onClick={() => handleSetActive(link.title)}
-                      className="transition duration-300"
+                      className={`${
+                        activeLink === link.title
+                          ? "text-black font-semibold"
+                          : "text-gray-500"
+                      } text-xl`}
                     >
                       {link.title}
                     </a>
