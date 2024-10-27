@@ -1,9 +1,20 @@
 import React from 'react'
+import ContactSection from './ConatctSection';
+import FreeTrail from '../AboutUs/FreeTrail';
+import Footer from '../../Components/Footer';
+import Contactdetail from './Contactdetail';
 
 function ContactUs() {
   return (
-    <div>ContactUs</div>
-  )
+    <>
+      <ContactSection />
+      <Contactdetail/>
+      <div className="px-4 md:px-10">
+        <FreeTrail />
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default ContactUs

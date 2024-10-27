@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Pricing {
+    background-image: url("/Frame 1261153745.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

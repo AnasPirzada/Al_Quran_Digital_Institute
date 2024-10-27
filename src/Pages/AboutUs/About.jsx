@@ -1,4 +1,5 @@
 import React from "react";
+import FreeTrail from "./FreeTrail";
 
 function About() {
   const details = [
@@ -95,10 +96,16 @@ function About() {
             <div key={index} className="text-start">
               <img src={item.image} alt="img" className="" />
               <h1 className="text-xl font-semibold mt-4">{item.title}</h1>
-              <p className="mt-2 text-[#333333] text-start">{item.description}</p>
+              <p className="mt-2 text-[#333333] text-start">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
+        <div className="px-4 md:px-10">
+          <FreeTrail />
+        </div>
+        
       </section>
     </>
   );
