@@ -1,6 +1,14 @@
 import React from 'react';
+import About from './About';
+import Footer from '../../Components/Footer';
 
 const index = () => {
-  return <div>index</div>;
+  return(
+  
+  <>
+      <About />
+      <Footer/>
+    </>
+  )
 };
 export default index;

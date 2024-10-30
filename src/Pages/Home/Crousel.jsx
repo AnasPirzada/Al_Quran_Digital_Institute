@@ -8,24 +8,21 @@ const Carousel = () => {
   // Array to store slide information (title, description, and background image)
   const slides = [
     {
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      title: "Learn Quran for kids",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+        "Interactive Quran lessons for kids online, taught by experienced teachers for a strong foundation in faith.",
       bgImage: "bg-[url('/Group-12.png')]",
     },
     {
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      title: "Learn Quran Online anytime anywhere",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+        "Learn the Quran at your own pace, with online classes available anytime and from any location.",
       bgImage: "bg-[url('/Frame-417.png')]",
     },
     {
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      title: "Quran Online Clases USA",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+        "Experience engaging Quran classes online in the USA, tailored for your convenience and spiritual growth!",
       bgImage: "bg-[url('/Frame-418.png')]",
     },
   ];
