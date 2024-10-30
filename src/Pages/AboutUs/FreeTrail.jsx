@@ -1,6 +1,9 @@
+// FreeTrail.js
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import  "../../../firebase"; // Make sure to import your Firebase configuration
+import { ref, set } from "firebase/database"; // Import Firebase database functions
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -20,7 +23,6 @@ function FreeTrail() {
     controls.start("visible");
   }
 
-  // Variants for the animations
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -34,6 +36,39 @@ function FreeTrail() {
   const handleOptionClick = (option) => {
     setInput4(option);
     setShowDropdown(false);
+  };
+
+  // Firebase data submission
+  const putData = () => {
+    set(ref(db, "users/" + Date.now()), {
+      // Use a unique key for each entry
+      name: input1,
+      phone: input2,
+      email: input3,
+      selectedCourse: input4,
+      gender: selectedOption,
+    })
+      .then(() => {
+        console.log("Data saved successfully!");
+        alert(`Data saved successfully!\nEmail: ${input3}`);
+      })
+      .catch((error) => {
+        console.error("Error saving data:", error);
+      });
+  };
+
+  const handleEnrollNowClick = () => {
+    const formData = {
+      name: input1,
+      phone: input2,
+      email: input3,
+      selectedCourse: input4,
+      gender: selectedOption,
+    };
+    console.log("Form Data Submitted:", formData);
+
+    // Call putData to save form data to Firebase
+    putData();
   };
 
   return (
@@ -132,7 +167,7 @@ function FreeTrail() {
                   country={"us"}
                   value={input2}
                   onChange={(phone) => setInput2(phone)}
-                  inputClass="text-black rounded-3xl outline-transparent rounded-3xl w-full"
+                  inputClass="text-black rounded-3xl outline-transparent"
                   buttonClass="rounded-3xl"
                   className="border-none outline-none inline rounded-3xl"
                 />
@@ -180,13 +215,13 @@ function FreeTrail() {
                       "Tajweed Quran Online",
                       "Quran Memorization Online",
                     ].map((option) => (
-                      <p
+                      <div
                         key={option}
-                        className="text-gray-700 cursor-pointer hover:bg-gray-100 p-2 rounded"
                         onClick={() => handleOptionClick(option)}
+                        className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg"
                       >
                         {option}
-                      </p>
+                      </div>
                     ))}
                   </motion.div>
                 )}
@@ -194,15 +229,16 @@ function FreeTrail() {
             </div>
           </motion.div>
 
-          {/* Enroll Button */}
-          <motion.div
-            className="flex justify-center items-center mt-4"
-            variants={sectionVariants}
-          >
-            <button className="h-10 md:h-12 w-[150px] md:w-[200px] bg-[#FFD050] rounded-3xl border-none text-[#FFFFFF] font-semibold text-sm md:text-base">
+          {/* Enroll Now Button */}
+          <div className=" flex justify-center items-center">
+            <motion.button
+              onClick={handleEnrollNowClick}
+              className="bg-[#FFD050] text-white w-[200px] p-3 rounded-3xl mt-4 hover:bg-[#FFC300] transition-colors duration-300"
+              variants={sectionVariants}
+            >
               Enroll Now
-            </button>
-          </motion.div>
+            </motion.button>
+          </div>
         </div>
       </div>
     </motion.section>
