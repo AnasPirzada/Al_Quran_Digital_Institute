@@ -7,6 +7,7 @@ import Courses from './Pages/Courses'
 import Pricing from "./Pages/Pricing/Pricing"
 import ContactUs from './Pages/ContactUs/ContactUs';
 import FAQs from './Pages/FAQs/FAQs';
+// import Modal from './Components/Modal';
 
 function App() {
   return (
@@ -16,13 +17,14 @@ function App() {
 
       {/* Define routes for each page */}
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/courses' element={<Courses />} />
-        <Route path='/pricing' element={<Pricing />} />
-        <Route path='/contact' element={<ContactUs />} />
-        <Route path='/faqs' element={<FAQs />} /> 
-         {/* <Route path='/blogs' element={<Blogs />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/faqs" element={<FAQs />} />
+        {/* <Route path="/inputmodal" element={<Modal/>} /> */}
+        {/* <Route path='/blogs' element={<Blogs />} /> */}
       </Routes>
     </Router>
   );

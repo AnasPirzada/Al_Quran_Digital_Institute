@@ -54,6 +54,7 @@ function FAQsdetail() {
               >
                 {faq.title}
               </h1>
+
               <img
                 src="/icon-park-outline_down.svg"
                 alt="icon-down"
@@ -66,6 +67,7 @@ function FAQsdetail() {
               />
             </div>
           </div>
+          <hr className=" border border-[#000000] mt-4" />
 
           {openIndex === index && (
             <div className="px-12 py-4 mt-2 bg-gray-100 rounded-md">

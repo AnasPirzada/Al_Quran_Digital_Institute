@@ -24,7 +24,7 @@ function Pricing() {
             />
           </div>
         </div>
-        <h1 className="absolute inset-0 flex items-center justify-center font-semibold sm:text-8xl text-3xl text-[#1A1A1A] z-10">
+        <h1 className="absolute inset-0 flex items-center justify-center font-semibold text-3xl sm:text-4xl md:text-5xl xl:text-7xl text-[#1A1A1A]">
           Pricing
         </h1>
       </section>

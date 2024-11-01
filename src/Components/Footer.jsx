@@ -39,7 +39,7 @@ function Footer() {
 
   return (
     <motion.section
-      className="bg-[#1C8E5A] p-4 mt-10 overflow-hidden"
+      className="bg-[#1C8E5A] mt-10 "
       ref={ref}
       variants={sectionVariants}
       initial="hidden"
@@ -48,21 +48,33 @@ function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#1C8E5A] overflow-hidden">
         {/* Image and Text Section */}
         <motion.div
-          className="col-span-12 md:col-span-5 flex sm:px-4 px-3 flex-col gap-4 justify-center items-start"
+          className="col-span-12 relative md:col-span-5 flex  flex-col gap-4 justify-center items-start"
           variants={sectionVariants}
         >
-          <img src="/Frame 7.svg" alt="Footer Logo" />
-          <p className="font-normal text-base text-[#FFFFFF] text-wrap">
+          {/* Logo and Text Section */}
+          <img
+            src="/Frame 7.svg"
+            alt="Footer Logo"
+            className="mb-4 relative sm:px-4 px-3"
+          />
+
+          <p className="font-normal text-base text-[#FFFFFF] text-wrap mb-4 relative sm:px-4 px-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
+
+          {/* Vector Image Section */}
+          <div className=" absolute bottom-[-0px]">
+            <img src="/Vector.png" alt="Vector Image" />
+          </div>
         </motion.div>
 
+        <div className=" col-span-2 md:col-span-2"></div>
         {/* Form Section */}
         <motion.div
-          className="col-span-12 md:col-span-7 flex flex-col gap-4 justify-center text-white"
+          className="col-span-12 p-4 md:col-span-5 flex flex-col gap-4 justify-center text-white"
           variants={sectionVariants}
         >
           <h1 className="text-[#FFFFFF] font-semibold text-xl mb-2 md:mb-4 text-center">
@@ -126,14 +138,16 @@ function Footer() {
                 />
               </div>
 
-              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
+              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
                 <PhoneInput
-                  country={"us"}
+                  country={"us"} // default country
                   value={input2}
                   onChange={(phone) => setInput2(phone)}
-                  inputClass="text-black rounded-3xl outline-transparent w-full"
-                  buttonClass="rounded-3xl"
-                  className="border-none outline-none inline rounded-3xl"
+                  enableSearch={true} // Enables search within the dropdown
+                  inputClass="text-black rounded-3xl outline-transparent w-full border-none"
+                  buttonClass="rounded-3xl border-none"
+                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300"
+                  className="flex w-full items-center rounded-3xl border-none" // Wrapper class
                 />
               </div>
             </div>
@@ -181,7 +195,7 @@ function Footer() {
                     ].map((option) => (
                       <p
                         key={option}
-                        className="text-gray-700 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="text-gray-700 cursor-pointer  hover:bg-gray-100 p-[7px] rounded"
                         onClick={() => handleOptionClick(option)}
                       >
                         {option}

@@ -58,21 +58,19 @@ const Courses = () => {
   return (
     <>
       <section>
-        <div className="bg-[#F2F2F2] flex flex-col md:flex-row justify-between items-center py-8">
-          <div className="w-full md:w-1/2 px-4 md:px-16 mb-6 md:mb-0">
-            <h1 className="font-semibold text-5xl md:text-7xl xl:text-8xl text-[#1A1A1A]">
+        <div className="relative">
+          <img
+            src="/Group 12.png"
+            alt="About-Us"
+            className="max-w-full h-auto"
+          />
+          <div className="absolute inset-0 flex flex-col justify-center items-start text-start px-4 md:px-16 mb-6 md:mb-0">
+            <h1 className="font-semibold text-3xl sm:text-4xl md:text-5xl xl:text-7xl text-[#1A1A1A]">
               Courses
             </h1>
-            <h2 className="text-[#1A1A1A] text-2xl md:text-4xl font-medium text-nowrap mt-4">
+            <p className="text-[#1A1A1A] text-2xl md:text-4xl font-medium mt-4">
               What We Offer
-            </h2>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <img
-              src="/image.png"
-              alt="About-Us"
-              className="max-w-full h-auto"
-            />
+            </p>
           </div>
         </div>
 

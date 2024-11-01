@@ -32,27 +32,31 @@ function About() {
   return (
     <>
       <section>
-        <div className=" bg-[#F2F2F2] flex flex-col md:flex-row justify-between items-center  py-8">
-          <div className="w-full md:w-1/2 px-4 md:px-16 mb-6 md:mb-0">
-            <h1 className="font-semibold text-5xl md:text-7xl xl:text-8xl text-[#1A1A1A]">
-              About
-            </h1>
-            <h2 className="text-[#1A1A1A] text-2xl md:text-4xl font-medium text-nowrap mt-4">
-              Smart Quran Institute
-            </h2>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+        <div className="relative flex flex-col md:flex-row justify-center items-center">
+          {/* Image Container */}
+          <div className="w-full relative flex justify-center md:justify-end">
             <img
-              src="/image 20.png"
+              src="/Frame 1261153740.png"
               alt="About-Us"
-              className="max-w-full h-auto"
+              className="w-full h-auto object-cover"
             />
+
+            {/* Text Overlay */}
+            <div className="absolute inset-0 flex flex-col justify-center items-start text-start px-4 md:px-16 mb-6">
+              <h1 className="font-semibold text-3xl sm:text-4xl md:text-5xl xl:text-7xl text-[#1A1A1A]">
+                About Us
+              </h1>
+              <p className="text-[#1A1A1A] text-lg sm:text-xl md:text-2xl font-medium mt-2 sm:mt-4">
+                Al Rehman learning Quran institute
+              </p>
+            </div>
           </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-12 pt-10 px-4 md:px-16 gap-8 md:gap-16 lg:gap-20 xl:gap-20 2xl:gap-20 ">
           <div className="col-span-12 md:col-span-8">
             <h1 className="font-medium text-[#1C8E5A] text-3xl md:text-4xl">
-              Smart Quran Institute
+              Al Rehman learning Quran institute
             </h1>
             <p className="font-normal text-base md:text-lg text-[#333333] mt-4 ">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -81,7 +85,7 @@ function About() {
             Why Study with US
           </h2>
           <h1 className="font-medium text-xl md:text-2xl text-center">
-            Smart Quran Institute
+            Al Rehman learning Quran institute
           </h1>
           <p className="text-[#333333] font-normal text-base md:text-lg lg:text-xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -105,7 +109,6 @@ function About() {
         <div className="px-4 md:px-10">
           <FreeTrail />
         </div>
-        
       </section>
     </>
   );

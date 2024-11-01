@@ -149,8 +149,8 @@ function FreeTrail() {
             className="flex flex-col gap-y-4 mt-4"
             variants={sectionVariants}
           >
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
+            <div className="flex flex-col md:flex-row gap-4 relative">
+              <div className="flex items-center  bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
                 <img src="/solar_user-linear.png" alt="" />
                 <hr className="h-7 border-[#9F9F9F] border mx-2" />
                 <input
@@ -162,14 +162,16 @@ function FreeTrail() {
                 />
               </div>
 
-              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
+              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
                 <PhoneInput
-                  country={"us"}
+                  country={"us"} // default country
                   value={input2}
                   onChange={(phone) => setInput2(phone)}
-                  inputClass="text-black rounded-3xl outline-transparent"
-                  buttonClass="rounded-3xl"
-                  className="border-none outline-none inline rounded-3xl"
+                  enableSearch={true} // Enables search within the dropdown
+                  inputClass="text-black rounded-3xl outline-transparent w-full border-none"
+                  buttonClass="rounded-3xl border-none"
+                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300"
+                  className="flex w-full items-center rounded-3xl border-none" // Wrapper class
                 />
               </div>
             </div>
@@ -203,7 +205,7 @@ function FreeTrail() {
                 />
                 {showDropdown && (
                   <motion.div
-                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
+                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white  text-black border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}

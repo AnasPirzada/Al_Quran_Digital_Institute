@@ -8,3 +8,10 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.phone-dropdown {
+    position: absolute !important;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 50;
+    /* Ensures it appears above other elements */
+}

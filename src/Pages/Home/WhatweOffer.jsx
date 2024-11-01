@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Modal from "../../Components/Modal";
 
 const WhatweOffer = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null); // State to hold selected course details
 
   const courses = [
     {
@@ -25,15 +28,16 @@ const WhatweOffer = () => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153731.svg",
     },
     {
       title: "Quran Memorization Online",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153731 (1).svg",
     },
+    
   ];
 
   // Animation variants
@@ -43,12 +47,12 @@ const WhatweOffer = () => {
   };
 
   return (
-    <div className="relative bg-[#3F3322] p-20">
+    <div className="relative bg-[#3F3322] px-10">
       {/* Background image outside cards */}
-      <div className="absolute inset-0 bg-[url('/what-we-offer.png')] bg-cover bg-center opacity-10 z-0"></div>
+      <div className="absolute inset-0 bg-[url('/what-we-offer.png')] h-auto bg-cover bg-no-repeat bg-center z-0 opacity-40 hidden md:block"></div>
 
       {/* Section Header */}
-      <div className="relative z-10 text-center mb-12">
+      <div className="relative z-10 text-center py-4">
         <p className="text-yellow-400 font-bold text-lg">WHAT WE OFFER</p>
         <p className="text-white text-2xl font-bold">
           We Deliver Top-Quality Arabic & Quran Instruction
@@ -56,7 +60,7 @@ const WhatweOffer = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="relative z-10 p-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
         {courses.map((course, index) => {
           const controls = useAnimation();
           const { ref, inView } = useInView({
@@ -72,14 +76,14 @@ const WhatweOffer = () => {
           return (
             <motion.div
               key={index}
-              className="relative"
+              className="relative "
               ref={ref}
               variants={cardVariants}
               initial="hidden"
               animate={controls}
             >
               {/* Icon */}
-              <div className="flex items-center justify-center mx-auto translate-y-12 z-20 relative">
+              <div className="flex items-center justify-center translate-y-12 z-20 relative">
                 <img
                   src={course.icon}
                   alt={`${course.title} Icon`}
@@ -88,7 +92,7 @@ const WhatweOffer = () => {
               </div>
 
               {/* Card Content */}
-              <div className="bg-white shadow-lg rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden">
+              <div className="bg-white shadow-lg  rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden">
                 <div className="flex justify-end items-start w-full">
                   <img src="/Card-right.png" alt="" />
                 </div>
@@ -105,7 +109,11 @@ const WhatweOffer = () => {
                 className={`transition-transform p-2 ${
                   activeIndex === index ? "bg-[#1C8E5A]" : "bg-[#E1E1E1]"
                 }`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  setActiveIndex(index);
+                  setSelectedCourse(course); // Set the selected course for modal display
+                  setIsModalOpen(true); // Open the modal
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -118,6 +126,13 @@ const WhatweOffer = () => {
           );
         })}
       </div>
+
+      {/* Modal Component */}
+      <Modal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        course={selectedCourse}
+      />
     </div>
   );
 };

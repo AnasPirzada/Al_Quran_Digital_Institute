@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Modal from "../Components/Modal"; // Import the modal
 
 const navLinks = [
   { title: "Home", url: "/" },
@@ -10,12 +11,12 @@ const navLinks = [
   { title: "Pricing", url: "/pricing" },
   { title: "Contact Us", url: "/contact" },
   { title: "FAQs", url: "/faqs" },
-  { title: "Blogs", url: "" },
 ];
 
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
-  const [activeLink, setActiveLink] = useState("");
+  const [showBookModal, setShowBookModal] = useState(false); // Modal state for Book Now
+  const [activeLink, setActiveLink] = useState("Home");
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -56,7 +57,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white py-4 px-4 shadow-md sticky top-0 z-50 text-nowrap ">
+    <nav className="bg-white py-4 px-4 shadow-md sticky top-0 z-50 text-nowrap">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <img src="/Logo.svg" alt="Logo" />
@@ -81,7 +82,10 @@ function Navbar() {
 
         {/* 'Book Now' Button */}
         <div className="hidden lg:block">
-          <button className="bg-[#FFD050] text-[#1A1A1A] font-semibold py-2 px-4 rounded-md transition duration-300">
+          <button
+            onClick={() => setShowBookModal(true)} // Show modal on click
+            className="bg-[#FFD050] text-[#1A1A1A] font-semibold py-2 px-4 rounded-md transition duration-300"
+          >
             Book Now
           </button>
         </div>
@@ -96,14 +100,14 @@ function Navbar() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center"
+            className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center" // Updated background color and opacity
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             <FaTimes
-              className="absolute top-6 right-4 text-white cursor-pointer"
+              className="absolute top-6 right-4 text-white h-8 w-6 cursor-pointer"
               onClick={toggleModal}
               style={{ fontSize: "24px" }}
             />
@@ -117,8 +121,8 @@ function Navbar() {
               <ul className="flex flex-col items-center gap-8">
                 {navLinks.map((link) => (
                   <motion.li key={link.title} variants={linkItemVariants}>
-                    <a
-                      href={link.url}
+                    <Link
+                      to={link.url}
                       onClick={() => handleSetActive(link.title)}
                       className={`${
                         activeLink === link.title
@@ -127,19 +131,25 @@ function Navbar() {
                       } text-xl`}
                     >
                       {link.title}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
-                <motion.li variants={linkItemVariants}>
-                  <button className="bg-[#FFD050] text-[#1A1A1A] font-semibold py-2 px-4 rounded-md transition duration-300">
+                <li>
+                  <button
+                    onClick={() => setShowBookModal(true)} // Show modal on click
+                    className="bg-[#FFD050] text-[#1A1A1A] font-semibold py-2 px-4 rounded-md transition duration-300"
+                  >
                     Book Now
                   </button>
-                </motion.li>
+                </li>
               </ul>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Modal Component */}
+      <Modal isOpen={showBookModal} setIsOpen={setShowBookModal} />
     </nav>
   );
 }

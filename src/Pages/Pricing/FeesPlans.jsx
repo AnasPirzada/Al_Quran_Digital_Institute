@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function FeesPlans() {
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState(0); // Initialize selectedPlan to 0 for the first card
   const plans = [
     {
       price: "$30/Month",
@@ -47,7 +47,7 @@ function FeesPlans() {
         Fees and Plans
       </h1>
       <div className="px-10 md:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
           {plans.map((plan, index) => {
             const controls = useAnimation();
             const { ref, inView } = useInView({
@@ -72,7 +72,8 @@ function FeesPlans() {
                       ? "bg-[#1C8E5A] text-white"
                       : "bg-[#FFD050] text-[#1A1A1A]"
                   } font-semibold text-lg rounded-2xl mb-5 -mt-[40px]`}
-                  onClick={() => setSelectedPlan(index)}
+                  // Only change the selected plan if it's not the first card
+                  onClick={() => index !== 0 && setSelectedPlan(index)}
                 >
                   {plan.price}
                 </button>
@@ -101,7 +102,8 @@ function FeesPlans() {
                       ? "bg-[#1C8E5A] text-white"
                       : "bg-[#FFD050] text-[#1A1A1A]"
                   } font-semibold text-md rounded-full`}
-                  onClick={() => setSelectedPlan(index)}
+                  // Only change the selected plan if it's not the first card
+                  onClick={() => index !== 0 && setSelectedPlan(index)}
                 >
                   Select Plan
                 </button>
