@@ -22,9 +22,9 @@ const Carousel = () => {
       bgImage: "bg-[url('/Frame-417.png')]",
     },
     {
-      title: "Quran Online Classes USA",
+      title: "Quran Online Classes UK",
       description:
-        "Experience engaging Quran classes online in the USA, tailored for your convenience and spiritual growth!",
+        "Experience engaging Quran classes online in the UK, tailored for your convenience and spiritual growth!",
       bgImage: "bg-[url('/Frame-418.png')]",
     },
   ];

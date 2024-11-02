@@ -1,59 +1,62 @@
 import React, { useState } from "react";
 import Card from "./Card"; // Import the Card component
+import Modal from "../../Components/Modal"; // Import the Modal component
 
 const Courses = () => {
-  // State to track the active card index
+  // State to track the active card index and modal visibility
   const [activeCardIndex, setActiveCardIndex] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Handle card click to set active card and open modal
+  const handleCardClick = (index) => {
+    setActiveCardIndex(index);
+    setIsModalOpen(true);
+  };
 
   const courses = [
     {
       title: "Qaida Noorania Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "This course is a great starting point for children learning the Quran. By the end, students will recognize and pronounce Arabic letters, grasp basic rules, and connect letters accurately, building a strong foundation for reading with correct pronunciation.",
       buttonText: "Enroll Now",
       icon: "/card-logo-Quran.svg",
     },
     {
       title: "Quran Reading Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Learn to read the Quran online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Quran reading skills with proper pronunciation and fluency from the comfort of home.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
-    },
-    {
-      title: "Tajweed Quran Online",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
-      buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153732.svg",
     },
     {
       title: "Quran Memorization Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Explore Quran reading with Tafseer to deepen your understanding of the verses. Our online sessions provide clear explanations and insights, helping you connect with the teachings and wisdom of the Quran.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153733.svg",
     },
     {
-      title: "Quran Memorization Online",
+      title: "Islamic Teachings Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Discover the essence of Islamic teachings through our online courses. We offer a comprehensive platform to explore fundamental principles, values, and practices of Islam, fostering a deeper connection to your faith.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153734.svg",
     },
     {
-      title: "Quran Memorization Online",
+      title: "Quran Reading Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Learn to read the Quran online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Quran reading skills with proper pronunciation and fluency from the comfort of home.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153735.svg",
+    },
+    {
+      title: "Quran Reading with Tajweed",
+      description:
+        "Master Quran reading with Tajweed through our online classes, designed to teach precise pronunciation and proper recitation techniques. Learn from expert tutors and enhance your understanding and fluency with ease from home.",
+      buttonText: "Enroll Now",
+      icon: "/Frame 1261153736.svg",
     },
   ];
-
-  const handleCardClick = (index) => {
-    // Set the clicked card as the active one
-    setActiveCardIndex(index);
-  };
 
   return (
     <>
@@ -74,19 +77,24 @@ const Courses = () => {
           </div>
         </div>
 
-        <div className="px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 h-full">
           {courses.map((course, index) => (
             <Card
               key={index}
               title={course.title}
               description={course.description}
               icon={course.icon}
-              isActive={activeCardIndex === index} // Check if the current card is active
-              onClick={() => handleCardClick(index)} // Pass the index of the clicked card
+              isActive={activeCardIndex === index}
+              onClick={() => handleCardClick(index)}
               buttonText={course.buttonText}
             />
           ))}
         </div>
+
+        {/* Modal */}
+        {isModalOpen && (
+          <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        )}
       </section>
     </>
   );

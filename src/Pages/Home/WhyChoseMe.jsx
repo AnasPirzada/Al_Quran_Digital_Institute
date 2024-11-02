@@ -47,10 +47,10 @@ const WhyChoseMe = () => {
                   Free Trial Classes for All
                 </h4>
                 <p className="text-gray-600 text-start md:text-left mt-2 text-sm ">
-                  At Quran Online Academy, we offer years of expertise in
-                  teaching the Quran online for the sake of Allah. Try a free
-                  class anytime—register for Skype lessons or contact us for a
-                  consultation!
+                  Al Rehman Learning Quran Institute, we offer years of
+                  expertise in teaching the Quran online for the sake of Allah.
+                  Try a free class anytime—register for Skype lessons or contact
+                  us for a consultation!
                 </p>
               </div>
               <div className="flex flex-col items-center md:items-start">
@@ -63,10 +63,43 @@ const WhyChoseMe = () => {
                   24/7 Flexible Schedule
                 </h4>
                 <p className="text-gray-600 text-start md:text-left mt-2 text-sm ">
-                  Quran Online Academy offers high-quality Quran classes in an
-                  engaging digital setting, allowing you and your family to
-                  learn from home. Our tutors are available 24/7 to support your
-                  journey.
+                  Al Rehman Learning Quran Institute offers high-quality Quran
+                  classes in an engaging digital setting, allowing you and your
+                  family to learn from home. Our tutors are available 24/7 to
+                  support your journey.
+                </p>
+              </div>
+              <div className="flex flex-col items-center md:items-start">
+                <img
+                  src="/parar-upper-line.svg"
+                  className="w-[60%] md:w-[50%] lg:w-[40%]"
+                  alt="Upper line"
+                />
+                <h4 className="text-lg md:text-xl font-semibold text-gray-800 mt-2">
+                  One-to-One Classes
+                </h4>
+                <p className="text-gray-600 text-start md:text-left mt-2 text-sm ">
+                  Al Rehman Learning Quran Institute provides one-on-one Quran
+                  classes with a dedicated teacher, offering personalized
+                  instruction in Quran reading, memorization, and tafseer. Each
+                  student receives focused, individualized learning for an
+                  effective Quran study experience.
+                </p>
+              </div>
+              <div className="flex flex-col items-center md:items-start">
+                <img
+                  src="/parar-upper-line.svg"
+                  className="w-[60%] md:w-[50%] lg:w-[40%]"
+                  alt="Upper line"
+                />
+                <h4 className="text-lg md:text-xl font-semibold text-gray-800 mt-2">
+                  Multilingual Teachers
+                </h4>
+                <p className="text-gray-600 text-start md:text-left mt-2 text-sm ">
+                  Al Rehman Learning Quran Institute features skilled teachers
+                  fluent in Arabic, English, and Urdu, ensuring clear and
+                  effective communication for a smooth learning experience in
+                  Quran classes.
                 </p>
               </div>
             </div>

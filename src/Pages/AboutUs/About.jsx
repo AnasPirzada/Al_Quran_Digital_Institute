@@ -5,25 +5,25 @@ function About() {
   const details = [
     {
       image: "/Frame 1261153708.png",
-      title: "Flexible Timings",
+      title: "Free Trial Classes for All",
+      description:
+        "At Quran Online Academy, we offer years of expertise in teaching the Quran online for the sake of Allah. Try a free class anytime—register for Skype lessons or contact us for a consultation!",
+    },
+    {
+      image: "/Frame 1261153708.png",
+      title: "24/7 Flexible Schedule",
+      description:
+        "Quran Online Academy offers high-quality Quran classes in an engaging digital setting, allowing you and your family to learn from home. Our tutors are available 24/7 to support your journey.",
+    },
+    {
+      image: "/Frame 1261153708.png",
+      title: "One-to-One Classes",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       image: "/Frame 1261153708.png",
-      title: "Expert Teachers",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/Frame 1261153708.png",
-      title: "Expert Teachers",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/Frame 1261153708.png",
-      title: "Expert Teachers",
+      title: "Multilingual Teachers",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
@@ -59,21 +59,25 @@ function About() {
               Al Rehman learning Quran institute
             </h1>
             <p className="font-normal text-base md:text-lg text-[#333333] mt-4 ">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat... Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat...Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat...Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat...
+              Al Rehman Learning Quran Institute is dedicated to providing
+              high-quality Quranic education to students worldwide, emphasizing
+              the profound meanings and wisdom behind every holy word revealed
+              by Allah. Recognized globally for our outstanding online teaching
+              standards and comprehensive student support, our experienced
+              tutors hold authentic degrees and Ijazah certifications to ensure
+              reliable and knowledgeable instruction. We believe that Quranic
+              knowledge has the power to transform lives. For years, we've been
+              committed to making Quran education accessible to those who may
+              lack opportunities in their region, especially for learning with
+              proper Tajweed. Our mission is rooted in the concept of
+              Sadqa-e-Jariah (a form of ongoing charity) through the spread of
+              true Islamic knowledge. Our online Quran learning programs are
+              structured to cater to various needs and proficiency levels, from
+              basic to advanced courses in Tajweed, Tafseer, and memorization.
+              Designed for all age groups, we offer flexible learning options,
+              including both group and one-on-one sessions, ensuring that each
+              student receives personalized attention and a fulfilling learning
+              experience.
             </p>
           </div>
           <div className="col-span-12 md:col-span-4 flex md:justify-end">
@@ -88,10 +92,13 @@ function About() {
             Al Rehman learning Quran institute
           </h1>
           <p className="text-[#333333] font-normal text-base md:text-lg lg:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            At Al Rehman Learning Quran Institute, we specialize in online Quran
+            and Tajweed education, enabling you to integrate learning into your
+            everyday routine seamlessly. Our innovative teaching approach offers
+            an engaging and interactive experience, allowing students to deeply
+            connect with their studies. With the support of our dedicated and
+            knowledgeable tutors, you’ll receive guidance and encouragement at
+            every step of your learning journey.
           </p>
         </div>
 

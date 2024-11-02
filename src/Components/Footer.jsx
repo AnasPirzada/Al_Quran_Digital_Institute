@@ -32,6 +32,10 @@ function Footer() {
 
   const handleImageClick = () => setShowDropdown(!showDropdown);
 
+  const handlePhoneInputClick = () => {
+    setShowDropdown(!showDropdown); // Toggle dropdown on phone input click
+  };
+
   const handleOptionClick = (option) => {
     setInput4(option);
     setShowDropdown(false);
@@ -59,10 +63,13 @@ function Footer() {
           />
 
           <p className="font-normal text-base text-[#FFFFFF] text-wrap mb-4 relative sm:px-4 px-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Al Rehman learning Quran institute, we are dedicated to offering
+            students around the globe a profound understanding of the Holy Quran
+            and the wisdom embedded in its verses. Recognized internationally
+            for our high-quality online education, we pride ourselves on
+            delivering exceptional support to our learners. Our qualified tutors
+            possess authentic degrees and Ijazah certificates, ensuring that you
+            receive the best guidance on your journey to Quranic knowledge.
           </p>
 
           {/* Vector Image Section */}
@@ -146,8 +153,9 @@ function Footer() {
                   enableSearch={true} // Enables search within the dropdown
                   inputClass="text-black rounded-3xl outline-transparent w-full border-none"
                   buttonClass="rounded-3xl border-none"
-                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300"
+                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300 max-h-56 overflow-y-auto" // Max height and scroll for dropdown
                   className="flex w-full items-center rounded-3xl border-none" // Wrapper class
+                  onClick={handlePhoneInputClick} // Add onClick handler
                 />
               </div>
             </div>
@@ -195,7 +203,7 @@ function Footer() {
                     ].map((option) => (
                       <p
                         key={option}
-                        className="text-gray-700 cursor-pointer  hover:bg-gray-100 p-[7px] rounded"
+                        className="text-gray-700 cursor-pointer hover:bg-gray-100 p-[7px] rounded"
                         onClick={() => handleOptionClick(option)}
                       >
                         {option}
@@ -209,26 +217,16 @@ function Footer() {
 
           {/* Enroll Button */}
           <motion.div
-            className="flex justify-center items-center mt-4"
-            variants={sectionVariants}
+            className="flex justify-center mt-6 md:mt-4"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <button className="h-10 md:h-12 w-full bg-[#FFD050] rounded-3xl border-none text-[#FFFFFF] font-semibold text-sm md:text-base">
+            <button className="bg-[#FFD050]  font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out hover:bg-yellow-400 w-3/4">
               Enroll Now
             </button>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Footer Bottom Section */}
-      <motion.div
-        className="flex justify-between mt-4 md:mt-10"
-        variants={sectionVariants}
-      >
-        <p className="text-[#252525] text-normal text-base">
-          © 2024 Smart Quran Institute designed by itsmohsinar
-        </p>
-        <img src="/Frame 1261153724.svg" alt="image" />
-      </motion.div>
     </motion.section>
   );
 }

@@ -1,37 +1,32 @@
 import React, { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Modal from "../../Components/Modal";
 
 function FeesPlans() {
-  const [selectedPlan, setSelectedPlan] = useState(0); // Initialize selectedPlan to 0 for the first card
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const plans = [
     {
-      price: "$30/Month",
+      price: "30$/month",
       title: "Common",
-      frequency: "2 Days/Week",
+      frequency: "2 Days/week",
       features: ["30 Min Lesson", "8 Classes/Month", "4 hours/Month"],
     },
     {
-      price: "$30/Month",
-      title: "Acclaimed",
-      frequency: "2 Days/Week",
-      features: ["30 Min Lesson", "8 Classes/Month", "4 hours/Month"],
+      price: "$40/month",
+      title: "Suggested",
+      frequency: "3 Days/Week",
+      features: ["30 Min Lesson", "12 Classes/Month", "6 hours/Month"],
     },
     {
-      price: "$30/Month",
-      title: "Ultimate",
+      price: "$50/month",
+      title: "Recommended",
       frequency: "5 Days/Week",
-      features: ["30 Min Lesson", "8 Classes/Month", "4 hours/Month"],
-    },
-    {
-      price: "$30/Month",
-      title: "Ultimate",
-      frequency: "5 Days/Week",
-      features: ["30 Min Lesson", "8 Classes/Month", "4 hours/Month"],
+      features: ["30 Min Lesson", "20 Classes/Month", "10 hours/Month"],
     },
   ];
 
-  // Define animation variants for the cards
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -47,11 +42,11 @@ function FeesPlans() {
         Fees and Plans
       </h1>
       <div className="px-10 md:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
           {plans.map((plan, index) => {
             const controls = useAnimation();
             const { ref, inView } = useInView({
-              threshold: 0.2, // Trigger animation when 20% of card is in view
+              threshold: 0.2,
               triggerOnce: true,
             });
 
@@ -66,22 +61,14 @@ function FeesPlans() {
                 initial="hidden"
                 animate={controls}
               >
-                <button
-                  className={`h-[55px] w-[160px] ${
-                    selectedPlan === index
-                      ? "bg-[#1C8E5A] text-white"
-                      : "bg-[#FFD050] text-[#1A1A1A]"
-                  } font-semibold text-lg rounded-2xl mb-5 -mt-[40px]`}
-                  // Only change the selected plan if it's not the first card
-                  onClick={() => index !== 0 && setSelectedPlan(index)}
-                >
+                <button className="h-[55px] w-[160px] bg-[#FFD050] text-[#1A1A1A] font-semibold text-lg rounded-2xl mb-5 -mt-[40px]">
                   {plan.price}
                 </button>
                 <h3 className="text-xl font-semibold mb-2 text-center">
                   {plan.title}
                 </h3>
                 <p className="mb-2 text-center text-sm">{plan.frequency}</p>
-                <div className="flex flex-col gap-3 m-6 text-nowrap ">
+                <div className="flex flex-col gap-3 m-6 text-nowrap">
                   {plan.features.map((feature, idx) => (
                     <div
                       key={idx}
@@ -97,13 +84,8 @@ function FeesPlans() {
                   ))}
                 </div>
                 <button
-                  className={`h-[45px] w-[140px] ${
-                    selectedPlan === index
-                      ? "bg-[#1C8E5A] text-white"
-                      : "bg-[#FFD050] text-[#1A1A1A]"
-                  } font-semibold text-md rounded-full`}
-                  // Only change the selected plan if it's not the first card
-                  onClick={() => index !== 0 && setSelectedPlan(index)}
+                  onClick={() => setIsModalOpen(true)}
+                  className="h-[45px] w-[140px] bg-[#FFD050] text-[#1A1A1A] font-semibold text-md rounded-full hover:bg-[#1C8E5A] hover:text-white"
                 >
                   Select Plan
                 </button>
@@ -112,6 +94,9 @@ function FeesPlans() {
           })}
         </div>
       </div>
+
+      {/* Modal Component */}
+      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </section>
   );
 }

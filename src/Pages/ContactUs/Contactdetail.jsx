@@ -9,26 +9,26 @@ function ContactDetail() {
   const contactInfo = [
     {
       title: "Our Address",
-      description: "Lahore",
+      description: "97 Queen Street ,London ,E30 8EN",
       iconSrc: "/Frame 141.svg",
       iconAlt: "Address Icon",
     },
     {
       title: "Phone Number",
-      description: "+92 123 4567890",
+      description: "+447577655475",
       iconSrc: "/Frame 143.svg",
       iconAlt: "Phone Icon",
     },
     {
       title: "Email Address",
-      description: "info@example.com ",
+      description: "Alqurandigitalinstitute@gmail.com",
       iconSrc: "/Frame 142.svg",
       iconAlt: "Email Icon",
     },
     {
       title: "Working Hours",
       description:
-        "Our customer representative team is available 24/7 to answer your queries so please feel free to contact anytime",
+        "Our customers representative team is available 24/7 to answer your queries so please feel free to contact anytime",
       iconSrc: "/Frame 144.svg",
       iconAlt: "Clock Icon",
     },

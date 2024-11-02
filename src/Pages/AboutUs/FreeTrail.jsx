@@ -2,15 +2,16 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import  "../../../firebase"; // Make sure to import your Firebase configuration
-import { ref, set } from "firebase/database"; // Import Firebase database functions
+import "../../../firebase"; // Import your Firebase configuration
+import { set } from "firebase/database"; // Firebase database functions
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { } from "../../../firebase"; // Ensure your Firebase database is correctly referenced
 
 function FreeTrail() {
   const [selectedOption, setSelectedOption] = useState("Male");
   const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
+  const [phone, setPhone] = useState(""); // Define phone state
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -41,9 +42,8 @@ function FreeTrail() {
   // Firebase data submission
   const putData = () => {
     set(ref(db, "users/" + Date.now()), {
-      // Use a unique key for each entry
       name: input1,
-      phone: input2,
+      phone: phone,
       email: input3,
       selectedCourse: input4,
       gender: selectedOption,
@@ -58,16 +58,6 @@ function FreeTrail() {
   };
 
   const handleEnrollNowClick = () => {
-    const formData = {
-      name: input1,
-      phone: input2,
-      email: input3,
-      selectedCourse: input4,
-      gender: selectedOption,
-    };
-    console.log("Form Data Submitted:", formData);
-
-    // Call putData to save form data to Firebase
     putData();
   };
 
@@ -80,7 +70,6 @@ function FreeTrail() {
       animate={controls}
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-[#1C8E5A] overflow-hidden">
-        {/* Image Section */}
         <div className="col-span-12 md:col-span-5 flex justify-center items-center">
           <motion.img
             src="/Frame 1261153739.png"
@@ -91,7 +80,6 @@ function FreeTrail() {
           />
         </div>
 
-        {/* Text and Radio Button Section */}
         <div className="col-span-12 md:col-span-7 flex flex-col gap-4 justify-center text-white">
           <motion.h1
             className="text-[#FFD050] font-semibold text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4 text-center"
@@ -144,13 +132,12 @@ function FreeTrail() {
             </label>
           </motion.div>
 
-          {/* Input Fields */}
           <motion.div
             className="flex flex-col gap-y-4 mt-4"
             variants={sectionVariants}
           >
             <div className="flex flex-col md:flex-row gap-4 relative">
-              <div className="flex items-center  bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
+              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
                 <img src="/solar_user-linear.png" alt="" />
                 <hr className="h-7 border-[#9F9F9F] border mx-2" />
                 <input
@@ -162,16 +149,17 @@ function FreeTrail() {
                 />
               </div>
 
-              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
+              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
                 <PhoneInput
-                  country={"us"} // default country
-                  value={input2}
-                  onChange={(phone) => setInput2(phone)}
-                  enableSearch={true} // Enables search within the dropdown
-                  inputClass="text-black rounded-3xl outline-transparent w-full border-none"
-                  buttonClass="rounded-3xl border-none"
-                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300"
-                  className="flex w-full items-center rounded-3xl border-none" // Wrapper class
+                  country={"us"}
+                  value={phone}
+                  onChange={(phone) => setPhone(phone)}
+                  inputClass="text-black rounded-full w-full outline-none border-none"
+                  buttonClass="rounded-full"
+                  inputStyle={{
+                    color: "black", // Set the text color for the input (including country code) to black
+                    backgroundColor: "white", // Make sure the background is also white for contrast
+                  }}
                 />
               </div>
             </div>
@@ -205,7 +193,7 @@ function FreeTrail() {
                 />
                 {showDropdown && (
                   <motion.div
-                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white  text-black border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
+                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white text-black border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -229,18 +217,15 @@ function FreeTrail() {
                 )}
               </div>
             </div>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={handleEnrollNowClick}
+                className="bg-[#FFD050] hover:bg-yellow-400 w-1/3 py-2 px-4 rounded-full shadow-md transition-colors duration-300"
+              >
+                Enroll Now
+              </button>
+            </div>
           </motion.div>
-
-          {/* Enroll Now Button */}
-          <div className=" flex justify-center items-center">
-            <motion.button
-              onClick={handleEnrollNowClick}
-              className="bg-[#FFD050] text-white w-[200px] p-3 rounded-3xl mt-4 hover:bg-[#FFC300] transition-colors duration-300"
-              variants={sectionVariants}
-            >
-              Enroll Now
-            </motion.button>
-          </div>
         </div>
       </div>
     </motion.section>

@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 import Modal from "../../Components/Modal";
 
 const WhatweOffer = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null); // State to hold selected course details
 
@@ -12,32 +11,45 @@ const WhatweOffer = () => {
     {
       title: "Qaida Noorania Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "This course is a great starting point for children learning the Quran. By the end, students will recognize and pronounce Arabic letters, grasp basic rules, and connect letters accurately, building a strong foundation for reading with correct pronunciation.",
       buttonText: "Enroll Now",
       icon: "/card-logo-Quran.svg",
     },
     {
       title: "Quran Reading Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Learn to read the Quran online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Quran reading skills with proper pronunciation and fluency from the comfort of home.",
       buttonText: "Enroll Now",
       icon: "/card-logo-Quran.svg",
     },
     {
-      title: "Tajweed Quran Online",
+      title: "Quran Reading with Tajweed",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Join our online classes to master Quran reading with Tajweed. Learn accurate pronunciation and proper recitation techniques from skilled tutors, enhancing your understanding and fluency comfortably from home. Strengthen your connection with the Quran today.",
       buttonText: "Enroll Now",
       icon: "/Frame 1261153731.svg",
     },
     {
       title: "Quran Memorization Online",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore et dolore magna aliqua.",
+        "Join our Quran Memorization program online to commit the Holy Quran to heart with guided instruction. Our experienced tutors provide personalized support, helping you or your child memorize with precision, from the comfort of your home.",
       buttonText: "Enroll Now",
       icon: "/Frame 1261153731 (1).svg",
     },
-    
+    {
+      title: "Quran Reading with Tafseer",
+      description:
+        "Explore Quran reading with Tafseer to deepen your understanding of the verses. Our online sessions provide clear explanations and insights, helping you connect with the teachings and wisdom of the Quran.",
+      buttonText: "Enroll Now",
+      icon: "/Frame 1261153731 (1).svg",
+    },
+    {
+      title: "Islamic Teachings Online",
+      description:
+        "Discover the essence of Islamic teachings through our online courses. We offer a comprehensive platform to explore fundamental principles, values, and practices of Islam, fostering a deeper connection to your faith.",
+      buttonText: "Enroll Now",
+      icon: "/Frame 1261153731 (1).svg",
+    },
   ];
 
   // Animation variants
@@ -47,7 +59,7 @@ const WhatweOffer = () => {
   };
 
   return (
-    <div className="relative bg-[#3F3322] px-10">
+    <div className="relative bg-[#3F3322] px-0 md:px-10">
       {/* Background image outside cards */}
       <div className="absolute inset-0 bg-[url('/what-we-offer.png')] h-auto bg-cover bg-no-repeat bg-center z-0 opacity-40 hidden md:block"></div>
 
@@ -60,7 +72,7 @@ const WhatweOffer = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="relative z-10 p-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
+      <div className="relative z-10 p-5 md:p-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
         {courses.map((course, index) => {
           const controls = useAnimation();
           const { ref, inView } = useInView({
@@ -92,7 +104,7 @@ const WhatweOffer = () => {
               </div>
 
               {/* Card Content */}
-              <div className="bg-white shadow-lg  rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden">
+              <div className="bg-white shadow-lg rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden">
                 <div className="flex justify-end items-start w-full">
                   <img src="/Card-right.png" alt="" />
                 </div>
@@ -100,17 +112,14 @@ const WhatweOffer = () => {
                   <h3 className="text-lg font-semibold text-gray-800">
                     {course.title}
                   </h3>
-                  <p className="text-gray-600 mt-2">{course.description}</p>
+                  <p className="text-gray-600 mt-2 text-start">{course.description}</p>
                 </div>
               </div>
 
               {/* Enroll Button */}
               <motion.div
-                className={`transition-transform p-2 ${
-                  activeIndex === index ? "bg-[#1C8E5A]" : "bg-[#E1E1E1]"
-                }`}
+                className="transition-transform p-2 bg-[#E1E1E1] hover:bg-[#1C8E5A]" // Apply green background only on hover
                 onClick={() => {
-                  setActiveIndex(index);
                   setSelectedCourse(course); // Set the selected course for modal display
                   setIsModalOpen(true); // Open the modal
                 }}
