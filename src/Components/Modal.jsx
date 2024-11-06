@@ -32,19 +32,19 @@ const Modal = ({ isOpen, setIsOpen }) => {
 
     emailjs
       .send(
-        "service_kytqk3g",
-        "template_hjc2gum",
+        "service_a684mqv",
+        "template_x3m5vdh",
         templateParams,
-        "lUIpdH9srwu-56Y1d"
+        "R7RzaQFicwRxMNsAH"
       )
       .then((response) => {
         console.log("Email sent successfully!", response.status, response.text);
-         alert("Email sent successfully!");
+        alert("Email sent successfully!");
         // Optionally, clear inputs or close modal here
       })
       .catch((error) => {
         console.error("Failed to send email:", error);
-           alert("Failed to send email. Please try again.");
+        alert("Failed to send email. Please try again.");
       });
   };
 

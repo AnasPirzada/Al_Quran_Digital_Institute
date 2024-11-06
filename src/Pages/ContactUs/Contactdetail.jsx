@@ -51,10 +51,10 @@ function ContactDetail() {
     // Send the email
     emailjs
       .send(
-        "service_kytqk3g", // Replace with your Email.js service ID
-        "template_hjc2gum", // Replace with your Email.js template ID
+        "service_a684mqv",
+        "template_x3m5vdh",
         templateParams,
-        "lUIpdH9srwu-56Y1d" // Replace with your Email.js user ID
+        "R7RzaQFicwRxMNsAH" // Replace with your Email.js user ID
       )
       .then(
         (result) => {
