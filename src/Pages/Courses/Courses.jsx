@@ -3,8 +3,8 @@ import Card from "./Card"; // Import the Card component
 import Modal from "../../Components/Modal"; // Import the Modal component
 
 const Courses = () => {
-  // State to track the active card index and modal visibility
-  const [activeCardIndex, setActiveCardIndex] = useState(null);
+  // Set the first card as active by default (index 0)
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Handle card click to set active card and open modal
@@ -84,8 +84,8 @@ const Courses = () => {
               title={course.title}
               description={course.description}
               icon={course.icon}
-              isActive={activeCardIndex === index}
-              onClick={() => handleCardClick(index)}
+              isActive={activeCardIndex === index} // Set active state based on the activeCardIndex
+              onClick={() => handleCardClick(index)} // Update active card and open modal on click
               buttonText={course.buttonText}
             />
           ))}

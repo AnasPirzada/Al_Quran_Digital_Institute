@@ -115,7 +115,7 @@ const Carousel = () => {
               animate="visible"
               transition={{ delay: 1, duration: 1 }}
             >
-              Learn More
+              Start 3 Days Free Trail
             </motion.button>
           </div>
         </motion.div>

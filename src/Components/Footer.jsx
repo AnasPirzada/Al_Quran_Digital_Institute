@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import emailjs from "emailjs-com"; // Import Email.js
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import LastFooter from "./LastFooter";
 
 function Footer() {
   const [selectedOption, setSelectedOption] = useState("Male");
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const [input3, setInput3] = useState("");
-  const [input4, setInput4] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [input1, setInput1] = useState(""); // Name
+  const [input2, setInput2] = useState(""); // Phone
+  const [input3, setInput3] = useState(""); // Email
+  const [input4, setInput4] = useState(""); // Message
 
-  // Animation setup
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
@@ -20,7 +20,6 @@ function Footer() {
     controls.start("visible");
   }
 
-  // Define animation variants for sections
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -30,55 +29,74 @@ function Footer() {
     },
   };
 
-  const handleImageClick = () => setShowDropdown(!showDropdown);
+  const handleEnrollNowClick = () => {
+    // Define the email template parameters
+    const templateParams = {
+      to_name: "Admin", // Replace with the admin name or email if needed
+      from_name: input1, // User's name
+      user_email: input3, // User's email
+      user_mobile: input2, // User's mobile number (updated here)
+      user_message: input4, // User's message
+      name: input1,
+      mobile: input2,
+      email: input3,
+      message: input4,
+    };
 
-  const handlePhoneInputClick = () => {
-    setShowDropdown(!showDropdown); // Toggle dropdown on phone input click
+    // Send the email
+    emailjs
+      .send(
+        "service_kytqk3g", // Replace with your Email.js service ID
+        "template_hjc2gum", // Replace with your Email.js template ID
+        templateParams,
+        "lUIpdH9srwu-56Y1d" // Replace with your Email.js user ID
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Email sent successfully!");
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+          alert("Failed to send the email, please try again.");
+        }
+      );
   };
 
-  const handleOptionClick = (option) => {
-    setInput4(option);
-    setShowDropdown(false);
-  };
+
 
   return (
     <motion.section
-      className="bg-[#1C8E5A] mt-10 "
+      className="bg-[#1C8E5A] mt-10"
       ref={ref}
       variants={sectionVariants}
       initial="hidden"
       animate={controls}
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#1C8E5A] overflow-hidden">
-        {/* Image and Text Section */}
+        {/* Left Section with Logo and Text */}
         <motion.div
-          className="col-span-12 relative md:col-span-5 flex  flex-col gap-4 justify-center items-start"
+          className="col-span-12 md:col-span-5 flex flex-col gap-4 justify-center items-start"
           variants={sectionVariants}
         >
-          {/* Logo and Text Section */}
           <img
             src="/Frame 7.svg"
             alt="Footer Logo"
-            className="mb-4 relative sm:px-4 px-3"
+            className="mb-4 sm:px-4 px-3"
           />
-
-          <p className="font-normal text-base text-[#FFFFFF] text-wrap mb-4 relative sm:px-4 px-3">
+          <p className="font-normal text-base text-[#FFFFFF] mb-4 sm:px-4 px-3">
             Al Rehman learning Quran institute, we are dedicated to offering
-            students around the globe a profound understanding of the Holy Quran
-            and the wisdom embedded in its verses. Recognized internationally
-            for our high-quality online education, we pride ourselves on
-            delivering exceptional support to our learners. Our qualified tutors
-            possess authentic degrees and Ijazah certificates, ensuring that you
-            receive the best guidance on your journey to Quranic knowledge.
+            students around the globe a profound understanding of the Holy
+            Quran. Our qualified tutors possess authentic degrees and Ijazah
+            certificates.
           </p>
-
-          {/* Vector Image Section */}
-          <div className=" absolute bottom-[-0px]">
+          <div className="absolute bottom-[-0px]">
             <img src="/Vector.png" alt="Vector Image" />
           </div>
         </motion.div>
 
-        <div className=" col-span-2 md:col-span-2"></div>
+        <div className="col-span-2 md:col-span-2"></div>
+
         {/* Form Section */}
         <motion.div
           className="col-span-12 p-4 md:col-span-5 flex flex-col gap-4 justify-center text-white"
@@ -100,7 +118,7 @@ function Footer() {
                 value="Male"
                 checked={selectedOption === "Male"}
                 onChange={() => setSelectedOption("Male")}
-                className={`form-radio cursor-pointer w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 focus:ring-0 ${
+                className={`form-radio w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${
                   selectedOption === "Male"
                     ? "border-[#FFD050]"
                     : "border-transparent"
@@ -120,7 +138,7 @@ function Footer() {
                 value="Female"
                 checked={selectedOption === "Female"}
                 onChange={() => setSelectedOption("Female")}
-                className={`form-radio cursor-pointer w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 focus:ring-0 ${
+                className={`form-radio w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${
                   selectedOption === "Female"
                     ? "border-[#FFD050]"
                     : "border-transparent"
@@ -145,17 +163,16 @@ function Footer() {
                 />
               </div>
 
-              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
+              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
                 <PhoneInput
-                  country={"us"} // default country
+                  country={"us"}
                   value={input2}
                   onChange={(phone) => setInput2(phone)}
-                  enableSearch={true} // Enables search within the dropdown
+                  enableSearch
                   inputClass="text-black rounded-3xl outline-transparent w-full border-none"
                   buttonClass="rounded-3xl border-none"
-                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300 max-h-56 overflow-y-auto" // Max height and scroll for dropdown
-                  className="flex w-full items-center rounded-3xl border-none" // Wrapper class
-                  onClick={handlePhoneInputClick} // Add onClick handler
+                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300 max-h-56 overflow-y-auto"
+                  className="flex w-full items-center rounded-3xl border-none"
                 />
               </div>
             </div>
@@ -178,39 +195,9 @@ function Footer() {
                   type="text"
                   value={input4}
                   onChange={(e) => setInput4(e.target.value)}
-                  placeholder="Qaida Noorania Online"
+                  placeholder="Message"
                   className="p-[6px] ps-1 rounded-3xl text-black w-full outline-transparent"
                 />
-                <img
-                  src="/Frame 36.svg"
-                  alt=""
-                  className="cursor-pointer"
-                  onClick={handleImageClick}
-                />
-                {showDropdown && (
-                  <motion.div
-                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {[
-                      "Qaida Noorania Online",
-                      "Quran Reading Online",
-                      "Tajweed Quran Online",
-                      "Quran Memorization Online",
-                    ].map((option) => (
-                      <p
-                        key={option}
-                        className="text-gray-700 cursor-pointer hover:bg-gray-100 p-[7px] rounded"
-                        onClick={() => handleOptionClick(option)}
-                      >
-                        {option}
-                      </p>
-                    ))}
-                  </motion.div>
-                )}
               </div>
             </div>
           </div>
@@ -221,12 +208,16 @@ function Footer() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <button className="bg-[#FFD050]  font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out hover:bg-yellow-400 w-3/4">
+            <button
+              onClick={handleEnrollNowClick} // Use the correct function name
+              className="bg-[#FFD050] font-semibold py-2 px-4 rounded-full hover:bg-yellow-400 w-3/4"
+            >
               Enroll Now
             </button>
           </motion.div>
         </motion.div>
       </div>
+      <LastFooter />
     </motion.section>
   );
 }

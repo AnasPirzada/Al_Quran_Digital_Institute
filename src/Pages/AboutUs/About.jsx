@@ -11,7 +11,7 @@ function About() {
     },
     {
       image: "/Frame 1261153708.png",
-      title: "24/7 Flexible Schedule",
+      title: "Flexible Schedule",
       description:
         "Quran Online Academy offers high-quality Quran classes in an engaging digital setting, allowing you and your family to learn from home. Our tutors are available 24/7 to support your journey.",
     },

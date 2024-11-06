@@ -9,12 +9,12 @@ const index = () => {
   return (
     <div>
       <Crousel />
-      <WhyChoseME />
-      <WhatweOffer />
-      <FeesPlans />
       <div className="px-4 md:px-10">
         <FreeTrail />
       </div>
+      <WhyChoseME />
+      <WhatweOffer />
+      <FeesPlans />
 
       <Footer />
     </div>

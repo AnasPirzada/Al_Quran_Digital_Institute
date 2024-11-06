@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Modal from "../../Components/Modal";
 
 function FeesPlans() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activePlan, setActivePlan] = useState(0); // set first button active by default
 
   const plans = [
     {
@@ -28,10 +29,11 @@ function FeesPlans() {
   ];
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 50, scale: 1 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: { duration: 0.5, ease: "easeOut" },
     },
   };
@@ -56,7 +58,7 @@ function FeesPlans() {
               <motion.div
                 key={index}
                 ref={ref}
-                className="rounded-[50px] shadow-xl p-6 bg-white flex flex-col items-center"
+                className="rounded-[50px] shadow-xl p-6 bg-white flex flex-col items-center transition-transform transform hover:scale-105 hover:border-red-500 duration-300 ease-in-out"
                 variants={cardVariants}
                 initial="hidden"
                 animate={controls}
@@ -84,8 +86,15 @@ function FeesPlans() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="h-[45px] w-[140px] bg-[#FFD050] text-[#1A1A1A] font-semibold text-md rounded-full hover:bg-[#1C8E5A] hover:text-white"
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setActivePlan(index);
+                  }}
+                  className={`h-[45px] w-[140px] font-semibold text-md rounded-full ${
+                    activePlan === index
+                      ? "bg-[#1C8E5A] text-white"
+                      : "bg-[#FFD050] text-[#1A1A1A] hover:bg-[#1C8E5A] hover:text-white"
+                  }`}
                 >
                   Select Plan
                 </button>

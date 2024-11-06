@@ -60,7 +60,7 @@ const WhyChoseMe = () => {
                   alt="Upper line"
                 />
                 <h4 className="text-lg md:text-xl font-semibold text-gray-800 mt-2">
-                  24/7 Flexible Schedule
+                   Flexible Schedule
                 </h4>
                 <p className="text-gray-600 text-start md:text-left mt-2 text-sm ">
                   Al Rehman Learning Quran Institute offers high-quality Quran

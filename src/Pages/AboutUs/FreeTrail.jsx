@@ -2,16 +2,14 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import "../../../firebase"; // Import your Firebase configuration
-import { set } from "firebase/database"; // Firebase database functions
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { } from "../../../firebase"; // Ensure your Firebase database is correctly referenced
+import emailjs from "emailjs-com"; // Import Email.js
 
 function FreeTrail() {
   const [selectedOption, setSelectedOption] = useState("Male");
   const [input1, setInput1] = useState("");
-  const [phone, setPhone] = useState(""); // Define phone state
+  const [phone, setPhone] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -39,27 +37,40 @@ function FreeTrail() {
     setShowDropdown(false);
   };
 
-  // Firebase data submission
-  const putData = () => {
-    set(ref(db, "users/" + Date.now()), {
+  const handleEnrollNowClick = () => {
+    // Define the email template parameters
+    const templateParams = {
+      to_name: "Admin", // Replace with the admin name or email if needed
+      from_name: input1, // User's name
+      user_email: input3, // User's email
+      user_mobile: phone, // User's mobile number
+      user_message: input4, // User's message
       name: input1,
-      phone: phone,
+      mobile: phone,
       email: input3,
-      selectedCourse: input4,
-      gender: selectedOption,
-    })
-      .then(() => {
-        console.log("Data saved successfully!");
-        alert(`Data saved successfully!\nEmail: ${input3}`);
-      })
-      .catch((error) => {
-        console.error("Error saving data:", error);
-      });
+      message: input4,
+    };
+
+    // Send the email
+    emailjs
+      .send(
+        "service_kytqk3g", // Replace with your Email.js service ID
+        "template_hjc2gum", // Replace with your Email.js template ID
+        templateParams,
+        "lUIpdH9srwu-56Y1d" // Replace with your Email.js user ID
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Email sent successfully!");
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+          alert("Failed to send the email, please try again.");
+        }
+      );
   };
 
-  const handleEnrollNowClick = () => {
-    putData();
-  };
 
   return (
     <motion.section
@@ -157,8 +168,8 @@ function FreeTrail() {
                   inputClass="text-black rounded-full w-full outline-none border-none"
                   buttonClass="rounded-full"
                   inputStyle={{
-                    color: "black", // Set the text color for the input (including country code) to black
-                    backgroundColor: "white", // Make sure the background is also white for contrast
+                    color: "black",
+                    backgroundColor: "white",
                   }}
                 />
               </div>
@@ -182,45 +193,18 @@ function FreeTrail() {
                   type="text"
                   value={input4}
                   onChange={(e) => setInput4(e.target.value)}
-                  placeholder="Qaida Noorania Online"
+                  placeholder="Message"
                   className="p-[6px] ps-1 rounded-3xl text-black w-full outline-transparent"
                 />
-                <img
-                  src="/Frame 36.svg"
-                  alt=""
-                  className="cursor-pointer"
-                  onClick={handleImageClick}
-                />
-                {showDropdown && (
-                  <motion.div
-                    className="absolute right-0 bottom-0 rounded-3xl mt-10 bg-white text-black border border-gray-300 shadow-lg p-2 z-10 w-full md:w-48"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {[
-                      "Qaida Noorania Online",
-                      "Quran Reading Online",
-                      "Tajweed Quran Online",
-                      "Quran Memorization Online",
-                    ].map((option) => (
-                      <div
-                        key={option}
-                        onClick={() => handleOptionClick(option)}
-                        className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg"
-                      >
-                        {option}
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
+               
+                
+                
               </div>
             </div>
             <div className="flex justify-center mt-4">
               <button
                 onClick={handleEnrollNowClick}
-                className="bg-[#FFD050] hover:bg-yellow-400 w-1/3 py-2 px-4 rounded-full shadow-md transition-colors duration-300"
+                className="bg-[#FFD050] w-1/3 rounded-full px-6 py-2 transition duration-300 ease-in-out hover:bg-[#FFC048] focus:outline-none focus:ring-2 focus:ring-[#FFD050] focus:ring-opacity-50"
               >
                 Enroll Now
               </button>

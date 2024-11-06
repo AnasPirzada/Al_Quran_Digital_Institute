@@ -5,7 +5,8 @@ import Modal from "../../Components/Modal";
 
 const WhatweOffer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState(null); // State to hold selected course details
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0); // State to track the active card index
 
   const courses = [
     {
@@ -20,14 +21,14 @@ const WhatweOffer = () => {
       description:
         "Learn to read the Quran online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Quran reading skills with proper pronunciation and fluency from the comfort of home.",
       buttonText: "Enroll Now",
-      icon: "/card-logo-Quran.svg",
+      icon: "/Frame 1261153731 (2).svg",
     },
     {
       title: "Quran Reading with Tajweed",
       description:
         "Join our online classes to master Quran reading with Tajweed. Learn accurate pronunciation and proper recitation techniques from skilled tutors, enhancing your understanding and fluency comfortably from home. Strengthen your connection with the Quran today.",
       buttonText: "Enroll Now",
-      icon: "/Frame 1261153731.svg",
+      icon: "/Frame 1261153737.svg",
     },
     {
       title: "Quran Memorization Online",
@@ -41,14 +42,14 @@ const WhatweOffer = () => {
       description:
         "Explore Quran reading with Tafseer to deepen your understanding of the verses. Our online sessions provide clear explanations and insights, helping you connect with the teachings and wisdom of the Quran.",
       buttonText: "Enroll Now",
-      icon: "/Frame 1261153731 (1).svg",
+      icon: "/Frame 1261153737.svg",
     },
     {
       title: "Islamic Teachings Online",
       description:
         "Discover the essence of Islamic teachings through our online courses. We offer a comprehensive platform to explore fundamental principles, values, and practices of Islam, fostering a deeper connection to your faith.",
       buttonText: "Enroll Now",
-      icon: "/Frame 1261153731 (1).svg",
+      icon: "/Frame 1261153738.svg",
     },
   ];
 
@@ -88,7 +89,7 @@ const WhatweOffer = () => {
           return (
             <motion.div
               key={index}
-              className="relative "
+              className="relative"
               ref={ref}
               variants={cardVariants}
               initial="hidden"
@@ -112,16 +113,21 @@ const WhatweOffer = () => {
                   <h3 className="text-lg font-semibold text-gray-800">
                     {course.title}
                   </h3>
-                  <p className="text-gray-600 mt-2 text-start">{course.description}</p>
+                  <p className="text-gray-600 mt-2 text-start">
+                    {course.description}
+                  </p>
                 </div>
               </div>
 
               {/* Enroll Button */}
               <motion.div
-                className="transition-transform p-2 bg-[#E1E1E1] hover:bg-[#1C8E5A]" // Apply green background only on hover
+                className={`transition-transform p-2 ${
+                  activeIndex === index ? "bg-[#1C8E5A]" : "bg-[#E1E1E1]"
+                } hover:bg-[#1C8E5A]`} // Highlight selected button
                 onClick={() => {
-                  setSelectedCourse(course); // Set the selected course for modal display
-                  setIsModalOpen(true); // Open the modal
+                  setSelectedCourse(course);
+                  setIsModalOpen(true);
+                  setActiveIndex(index); // Set active index on click
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
