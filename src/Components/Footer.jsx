@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
-import emailjs from "emailjs-com"; // Import Email.js
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import LastFooter from "./LastFooter";
+import emailjs from 'emailjs-com'; // Import Email.js
+import { motion, useAnimation } from 'framer-motion';
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import LastFooter from './LastFooter';
 
 function Footer() {
-  const [selectedOption, setSelectedOption] = useState("Male");
-  const [input1, setInput1] = useState(""); // Name
-  const [input2, setInput2] = useState(""); // Phone
-  const [input3, setInput3] = useState(""); // Email
-  const [input4, setInput4] = useState(""); // Message
+  const [selectedOption, setSelectedOption] = useState('Male');
+  const [input1, setInput1] = useState(''); // Name
+  const [input2, setInput2] = useState(''); // Phone
+  const [input3, setInput3] = useState(''); // Email
+  const [input4, setInput4] = useState(''); // Message
 
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   if (inView) {
-    controls.start("visible");
+    controls.start('visible');
   }
 
   const sectionVariants = {
@@ -25,14 +25,14 @@ function Footer() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: 'easeOut' },
     },
   };
 
   const handleEnrollNowClick = () => {
     // Define the email template parameters
     const templateParams = {
-      to_name: "Admin", // Replace with the admin name or email if needed
+      to_name: 'Admin', // Replace with the admin name or email if needed
       from_name: input1, // User's name
       user_email: input3, // User's email
       user_mobile: input2, // User's mobile number (updated here)
@@ -46,102 +46,114 @@ function Footer() {
     // Send the email
     emailjs
       .send(
-        "service_a684mqv", // Replace with your Email.js service ID
-        "template_x3m5vdh", // Replace with your Email.js template ID
+        'service_a684mqv', // Replace with your Email.js service ID
+        'template_x3m5vdh', // Replace with your Email.js template ID
         templateParams,
-        "R7RzaQFicwRxMNsAH" // Replace with your Email.js user ID
+        'R7RzaQFicwRxMNsAH' // Replace with your Email.js user ID
       )
       .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          alert("Email sent successfully!");
+        result => {
+          console.log('Email sent successfully:', result.text);
+          alert('Email sent successfully!');
         },
-        (error) => {
-          console.error("Error sending email:", error);
-          alert("Failed to send the email, please try again.");
+        error => {
+          console.error('Error sending email:', error);
+          alert('Failed to send the email, please try again.');
         }
       );
   };
 
-
-
   return (
     <motion.section
-      className="bg-[#1C8E5A] mt-10"
+      className='bg-[#1C8E5A] mt-10'
       ref={ref}
       variants={sectionVariants}
-      initial="hidden"
+      initial='hidden'
       animate={controls}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#1C8E5A] overflow-hidden">
+      <div className='grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#1C8E5A] overflow-hidden'>
         {/* Left Section with Logo and Text */}
         <motion.div
-          className="col-span-12 md:col-span-5 flex flex-col gap-4 justify-center items-start"
+          className='col-span-12 md:col-span-4 flex flex-col gap-4 justify-center items-start'
           variants={sectionVariants}
         >
           <img
-            src="/Frame 7.svg"
-            alt="Footer Logo"
-            className="mb-4 sm:px-4 px-3"
+            src='/Frame 7.svg'
+            alt='Footer Logo'
+            className='mb-4 sm:px-4 px-3'
           />
-          <p className="font-normal text-base text-[#FFFFFF] mb-4 sm:px-4 px-3">
-            Al Rehman learning Quran institute, we are dedicated to offering
+          <p className='font-normal text-base text-[#FFFFFF] mb-4 sm:px-4 px-3'>
+          Al Quran Digital Institute, we are dedicated to offering
             students around the globe a profound understanding of the Holy
             Quran. Our qualified tutors possess authentic degrees and Ijazah
             certificates.
           </p>
-          <div className="absolute bottom-[-0px]">
-            <img src="/Vector.png" alt="Vector Image" />
+          <div className='absolute bottom-[-0px]'>
+            <img src='/Vector.png' alt='Vector Image' />
           </div>
         </motion.div>
 
-        <div className="col-span-2 md:col-span-2"></div>
+        <div className='col-span-12 md:col-span-3 mt-20 px-4 md:px-0 text-white text-sm sm:text-base space-y-4'>
+          <p>
+            <strong>Location:</strong> 97 Queen Street London E30 8EN
+          </p>
+          <p>
+            <strong>Phone:</strong> +447577655475
+          </p>
+          <p>
+            <strong>Email:</strong> Alqurandigitalinstitute@gmail.com
+          </p>
+          <p>
+            <strong>Working hours:</strong> Available 24/7 to answer your
+            queries
+          </p>
+        </div>
 
         {/* Form Section */}
         <motion.div
-          className="col-span-12 p-4 md:col-span-5 flex flex-col gap-4 justify-center text-white"
+          className='col-span-12 p-4 md:col-span-5 flex flex-col gap-4 justify-center text-white'
           variants={sectionVariants}
         >
-          <h1 className="text-[#FFFFFF] font-semibold text-xl mb-2 md:mb-4 text-center">
+          <h1 className='text-[#FFFFFF] font-semibold text-xl mb-2 md:mb-4 text-center'>
             Book 3 Days Free Trial
           </h1>
 
           {/* Gender Selection */}
-          <div className="flex items-center gap-4 justify-center">
+          <div className='flex items-center gap-4 justify-center'>
             <label
               className={`flex items-center gap-2 ${
-                selectedOption === "Male" ? "text-[#FFD050]" : "text-[#9F9F9F]"
+                selectedOption === 'Male' ? 'text-[#FFD050]' : 'text-[#9F9F9F]'
               }`}
             >
               <input
-                type="radio"
-                value="Male"
-                checked={selectedOption === "Male"}
-                onChange={() => setSelectedOption("Male")}
+                type='radio'
+                value='Male'
+                checked={selectedOption === 'Male'}
+                onChange={() => setSelectedOption('Male')}
                 className={`form-radio w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${
-                  selectedOption === "Male"
-                    ? "border-[#FFD050]"
-                    : "border-transparent"
+                  selectedOption === 'Male'
+                    ? 'border-[#FFD050]'
+                    : 'border-transparent'
                 } accent-[#FFD050]`}
               />
               <span>Male</span>
             </label>
             <label
               className={`flex items-center gap-2 ${
-                selectedOption === "Female"
-                  ? "text-[#FFD050]"
-                  : "text-[#9F9F9F]"
+                selectedOption === 'Female'
+                  ? 'text-[#FFD050]'
+                  : 'text-[#9F9F9F]'
               }`}
             >
               <input
-                type="radio"
-                value="Female"
-                checked={selectedOption === "Female"}
-                onChange={() => setSelectedOption("Female")}
+                type='radio'
+                value='Female'
+                checked={selectedOption === 'Female'}
+                onChange={() => setSelectedOption('Female')}
                 className={`form-radio w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${
-                  selectedOption === "Female"
-                    ? "border-[#FFD050]"
-                    : "border-transparent"
+                  selectedOption === 'Female'
+                    ? 'border-[#FFD050]'
+                    : 'border-transparent'
                 } accent-[#FFD050]`}
               />
               <span>Female</span>
@@ -149,54 +161,54 @@ function Footer() {
           </div>
 
           {/* Input Fields */}
-          <div className="flex flex-col gap-y-4 mt-4">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
-                <img src="/solar_user-linear.png" alt="" />
-                <hr className="h-7 border-[#9F9F9F] border mx-2" />
+          <div className='flex flex-col gap-y-4 mt-4'>
+            <div className='flex flex-col md:flex-row gap-4'>
+              <div className='flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl'>
+                <img src='/solar_user-linear.png' alt='' />
+                <hr className='h-7 border-[#9F9F9F] border mx-2' />
                 <input
-                  type="text"
+                  type='text'
                   value={input1}
-                  onChange={(e) => setInput1(e.target.value)}
-                  placeholder="Name"
-                  className="p-1 rounded-3xl text-black w-full outline-transparent"
+                  onChange={e => setInput1(e.target.value)}
+                  placeholder='Name'
+                  className='p-1 rounded-3xl text-black w-full outline-transparent'
                 />
               </div>
 
-              <div className="flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
+              <div className='flex items-center overflow-hidden bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl'>
                 <PhoneInput
-                  country={"us"}
+                  country={'gb'}
                   value={input2}
-                  onChange={(phone) => setInput2(phone)}
+                  onChange={phone => setInput2(phone)}
                   enableSearch
-                  inputClass="text-black rounded-3xl outline-transparent w-full border-none"
-                  buttonClass="rounded-3xl border-none"
-                  dropdownClass="text-black bg-white rounded-3xl shadow-lg border border-gray-300 max-h-56 overflow-y-auto"
-                  className="flex w-full items-center rounded-3xl border-none"
+                  inputClass='text-black rounded-3xl outline-transparent w-full border-none'
+                  buttonClass='rounded-3xl border-none'
+                  dropdownClass='text-black bg-white rounded-3xl shadow-lg border border-gray-300 max-h-56 overflow-y-auto'
+                  className='flex w-full items-center rounded-3xl border-none'
                 />
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl">
-                <img src="Frame 33.svg" alt="" />
-                <hr className="h-7 border-[#9F9F9F] border mx-2" />
+            <div className='flex flex-col md:flex-row gap-4'>
+              <div className='flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl'>
+                <img src='Frame 33.svg' alt='' />
+                <hr className='h-7 border-[#9F9F9F] border mx-2' />
                 <input
-                  type="text"
+                  type='text'
                   value={input3}
-                  onChange={(e) => setInput3(e.target.value)}
-                  placeholder="Email"
-                  className="p-1 rounded-3xl text-black w-full outline-transparent"
+                  onChange={e => setInput3(e.target.value)}
+                  placeholder='Email'
+                  className='p-1 rounded-3xl text-black w-full outline-transparent'
                 />
               </div>
 
-              <div className="flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative">
+              <div className='flex items-center bg-white p-1 ps-3 w-full md:w-1/2 rounded-3xl relative'>
                 <input
-                  type="text"
+                  type='text'
                   value={input4}
-                  onChange={(e) => setInput4(e.target.value)}
-                  placeholder="Message"
-                  className="p-[6px] ps-1 rounded-3xl text-black w-full outline-transparent"
+                  onChange={e => setInput4(e.target.value)}
+                  placeholder='Message'
+                  className='p-[6px] ps-1 rounded-3xl text-black w-full outline-transparent'
                 />
               </div>
             </div>
@@ -204,13 +216,13 @@ function Footer() {
 
           {/* Enroll Button */}
           <motion.div
-            className="flex justify-center mt-6 md:mt-4"
+            className='flex justify-center mt-6 md:mt-4'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <button
               onClick={handleEnrollNowClick} // Use the correct function name
-              className="bg-[#FFD050] font-semibold py-2 px-4 rounded-full hover:bg-yellow-400 w-3/4"
+              className='bg-[#FFD050] font-semibold py-2 px-4 rounded-full hover:bg-yellow-400 w-3/4'
             >
               Enroll Now
             </button>

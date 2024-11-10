@@ -120,7 +120,7 @@ function ContactDetail() {
               {/* Phone Input */}
               <div className="flex items-center bg-white p-2 sm:p-3 w-full rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
                 <PhoneInput
-                  country="us"
+                  country="gb"
                   value={input2}
                   onChange={(phone) => setInput2(phone)}
                   inputClass="text-gray-700 rounded-full w-full outline-none border-none"

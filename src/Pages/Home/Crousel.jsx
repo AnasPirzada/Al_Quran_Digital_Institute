@@ -5,16 +5,15 @@ import Modal from '../../Components/Modal';
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Array to store slide information with desktop and mobile images
   const slides = [
     {
       title: 'Learn Quran for kids',
       description:
         'Interactive Quran lessons for kids online, taught by experienced teachers for a strong foundation in faith.',
       bgImageDesktop: "bg-[url('/Group-12.png')]",
-      bgImageMobile: "bg-[url('/Group-12.png')]", // Add mobile-specific image URL
+      bgImageMobile: "bg-[url('/Group-12.png')]",
     },
     {
       title: 'Learn Quran Online anytime anywhere',
@@ -32,28 +31,25 @@ const Carousel = () => {
     },
   ];
 
-  // Effect to check the screen width
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Set to true if width is less than 768px (Tailwind's md breakpoint)
+      setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize); // Update on resize
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('resize', handleResize); // Clean up listener
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Automatically change slide every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       goToNextSlide();
-    }, 10000); // 10 seconds
+    }, 10000);
 
-    return () => clearInterval(interval); // Clear interval on unmount
+    return () => clearInterval(interval);
   }, [currentIndex]);
 
-  // Slide navigation functions
   const goToNextSlide = () => {
     setCurrentIndex(prevIndex =>
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
@@ -66,7 +62,6 @@ const Carousel = () => {
     );
   };
 
-  // Animation variants
   const textVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
@@ -82,8 +77,13 @@ const Carousel = () => {
     visible: { opacity: 1 },
   };
 
+  const iconVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div className='relative h-[50vh] w-full md:h-[100vh] overflow-hidden'>
+    <div className='relative h-[75vh] w-full md:h-[100vh] overflow-hidden'>
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -98,7 +98,6 @@ const Carousel = () => {
           transition={{ duration: 1 }}
           variants={bgVariants}
         >
-          {/* Left side content */}
           <div className='text-left text-white px-4 pt-60 md:pt-0 w-full md:w-[40%]'>
             <motion.h2
               key={`title-${currentIndex}`}
@@ -132,10 +131,47 @@ const Carousel = () => {
               Start 3 Days Free Trial
             </motion.button>
           </div>
+
+          {/* Social Media Icons */}
+          <motion.div
+            className='absolute right-0 top-[30%] md:top-1/2 transform -translate-y-1/2 space-y-4 mr-4'
+            variants={iconVariants}
+            initial='hidden'
+            animate='visible'
+            transition={{ delay: 1.5, duration: 1 }}
+          >
+            <a
+              href='http://youtube.com/channel/UCuIPXx106-Ifvq6VD3ecJ4A'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/Youtube.svg' className='w-10' alt='YouTube' />
+            </a>
+            <a
+              href='https://join.skype.com/invite/BOf0VvMKyAVe'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/skype.svg' className='w-10' alt='Skype' />
+            </a>
+            <a
+              href='https://www.instagram.com/alquran.digital.institute'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/instagram.svg' className='w-10' alt='Instagram' />
+            </a>
+            <a
+              href='https://www.facebook.com/profile.php?id=100083203658283'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/facebook-logo.svg' className='w-10' alt='Facebook' />
+            </a>
+          </motion.div>
         </motion.div>
       ))}
 
-      {/* Carousel indicators */}
       <div className='absolute bottom-4 left-0 right-0 flex justify-center space-x-2'>
         {slides.map((_, index) => (
           <button
@@ -148,7 +184,6 @@ const Carousel = () => {
         ))}
       </div>
 
-      {/* Modal Component */}
       <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </div>
   );

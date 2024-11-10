@@ -6,7 +6,7 @@ function LastFooter() {
       <section className='px-5 py-3'>
         <div className=' flex justify-between'>
           <div>
-            <h3>© 2024 Smart Quran Institute</h3>
+            <h3 className='text-white'>© 2024 Smart Quran Institute</h3>
           </div>
 
           <div className='flex'>
@@ -23,8 +23,15 @@ function LastFooter() {
               rel='noopener noreferrer'
             >
               <img src='/skype.svg' className='w-10' alt='' />
+            </a>{' '}
+            <a
+              href='https://www.instagram.com/alquran.digital.institute'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/instagram.svg' className='w-10' alt='' />
             </a>
-            {/* <img src='/instagram.svg' className='w-10' alt='' /> */}
+            {/* <img src='' className='w-10' alt='' /> */}
             <a
               href='https://www.facebook.com/profile.php?id=100083203658283'
               target='_blank'
