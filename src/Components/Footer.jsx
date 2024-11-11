@@ -83,31 +83,53 @@ function Footer() {
             className='mb-4 sm:px-4 px-3'
           />
           <p className='font-normal text-base text-[#FFFFFF] mb-4 sm:px-4 px-3'>
-          Al Quran Digital Institute, we are dedicated to offering
-            students around the globe a profound understanding of the Holy
-            Quran. Our qualified tutors possess authentic degrees and Ijazah
-            certificates.
+            Al Quran Digital Institute, we are dedicated to offering students
+            around the globe a profound understanding of the Holy Quran. Our
+            qualified tutors possess authentic degrees and Ijazah certificates.
           </p>
           <div className='absolute bottom-[-0px]'>
             <img src='/Vector.png' alt='Vector Image' />
           </div>
         </motion.div>
 
-        <div className='col-span-12 md:col-span-3 mt-20 px-4 md:px-0 text-white text-sm sm:text-base space-y-4'>
-          <p>
-            <strong>Location:</strong> 97 Queen Street London E30 8EN
-          </p>
-          <p>
-            <strong>Phone:</strong> +447577655475
-          </p>
-          <p>
-            <strong>Email:</strong> Alqurandigitalinstitute@gmail.com
-          </p>
-          <p>
-            <strong>Working hours:</strong> Available 24/7 to answer your
-            queries
-          </p>
-        </div>
+        {/* Location Section with Icons */}
+        <motion.div
+          className='col-span-12 md:col-span-3 my-auto px-4 md:px-0 text-white text-sm sm:text-base space-y-4'
+          variants={sectionVariants}
+        >
+          <motion.div className='flex items-center' whileHover={{ x: 5 }}>
+            <img
+              src='/footerlocation-icon.svg'
+              alt='Location Icon'
+              className='w-6 h-6 mr-2'
+            />
+            <p>97 Queen Street London E30 8EN</p>
+          </motion.div>
+          <motion.div className='flex items-center' whileHover={{ x: 5 }}>
+            <img
+              src='/footerphone-icon.svg'
+              alt='Phone Icon'
+              className='w-6 h-6 mr-2'
+            />
+            <p>+447577655475</p>
+          </motion.div>
+          <motion.div className='flex items-center' whileHover={{ x: 5 }}>
+            <img
+              src='/footeremail-icon.svg'
+              alt='Email Icon'
+              className='w-6 h-6 mr-2'
+            />
+            <p>Alqurandigitalinstitute@gmail.com</p>
+          </motion.div>
+          <motion.div className='flex items-center' whileHover={{ x: 5 }}>
+            <img
+              src='/footerhours-icon.svg'
+              alt='Working Hours Icon'
+              className='w-6 h-6 mr-2'
+            />
+            <p>Available 24/7 to answer your queries</p>
+          </motion.div>
+        </motion.div>
 
         {/* Form Section */}
         <motion.div

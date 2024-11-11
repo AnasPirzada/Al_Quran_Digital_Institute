@@ -19,7 +19,7 @@ const WhatsAppIcon = () => {
         target='_blank'
         rel='noopener noreferrer'
       >
-        <img src='Whatsapp.svg' className='w-12 h-12' alt='WhatsApp Icon' />
+        <img src='whtsap-left.svg' className='w-[50%] h-[50%] md:w-[70%] md:h-[70%]' alt='WhatsApp Icon' />
       </a>
     </motion.div>
   );

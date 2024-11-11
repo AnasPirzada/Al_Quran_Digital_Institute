@@ -28,6 +28,14 @@ function FeesPlans() {
     },
   ];
 
+  const discounts = [
+    { label: '15% for New & Disabled Muslims' },
+    { label: '10% discount for siblings' },
+    { label: '10% discount on Referrals' },
+    { label: '25% discount on annual payments' },
+    { label: '20% on 6-month payments' },
+  ];
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 1 },
     visible: {
@@ -40,9 +48,29 @@ function FeesPlans() {
 
   return (
     <section className='sm:pt-8 pt-5'>
-      <h1 className='font-semibold sm:text-5xl text-3xl text-center mb-6 text-[#1A1A1A]'>
-        Fees and Plans
-      </h1>
+      <div className='flex flex-col justify-center items-center p-4'>
+        <p className='font-bold text-3xl sm:text-6xl text-center mb-6 text-[#1A1A1A] leading-tight'>
+          <span>Fees</span> and <span>Plans</span>
+        </p>
+
+        <p className='font-medium sm:text-lg md:text-xl w-full md:w-2/3 mx-auto text-center mb-6 text-[#4F4F4F] leading-relaxed'>
+          We are committed to making things easy for all generations. Choose
+          from multiple courses and plans, each designed with affordable,
+          pocket-friendly pricing to help you on your journey to learn the Holy
+          Quran.
+          <br />
+          <span className='block font-semibold mt-2 text-[#1A1A1A]'>
+            We offer a progressive fee structure:
+          </span>
+        </p>
+
+        <span className='text-sm mt-2 text-gray-500 text-center'>
+          100% Free Trials and Assessment classes.
+          <br />
+          Monthly fees are charged in advance after trial classes.
+        </span>
+      </div>
+
       <div className='px-10 md:px-20'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8'>
           {plans.map((plan, index) => {
@@ -98,6 +126,42 @@ function FeesPlans() {
                 >
                   Select Plan
                 </button>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Discount Section */}
+      <div className='px-10 md:px-20 mt-12'>
+        <h3 className='text-2xl font-bold text-center mb-6 text-[#1A1A1A]'>
+          Exclusive Discounts
+        </h3>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          {discounts.map((discount, index) => {
+            const controls = useAnimation();
+            const { ref, inView } = useInView({
+              threshold: 0.2,
+              triggerOnce: true,
+            });
+
+            if (inView) controls.start('visible');
+
+            return (
+              <motion.div
+                key={index}
+                ref={ref}
+                className='rounded-lg shadow-lg p-6 bg-[#FFF6E0] flex items-center gap-4 transition-transform transform hover:scale-105 duration-300 ease-in-out'
+                variants={cardVariants}
+                initial='hidden'
+                animate={controls}
+              >
+                <img
+                  src='/uil_check.svg'
+                  alt='tick'
+                  className='h-6 w-6 text-[#1C8E5A]'
+                />
+                <p className='font-medium text-[#4F4F4F]'>{discount.label}</p>
               </motion.div>
             );
           })}

@@ -19,7 +19,7 @@ const WhatweOffer = () => {
     {
       title: 'Learn Arabic Language',
       description:
-        'Learn to read the Arabic Language online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Quran reading skills with proper pronunciation and fluency from the comfort of home.',
+        'Learn to read the Arabic Language online with personalized lessons, guided by experienced tutors. Our interactive platform helps you or your child build Arabic reading and speaking skills with proper pronunciation and fluency from the comfort of home.',
       buttonText: '                Start 3 Days Free Trial',
       icon: '/Frame 1261153731 (2).svg',
     },
@@ -132,9 +132,17 @@ const WhatweOffer = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <button className='px-4 py-2 text-white rounded-full flex items-center justify-center'>
+                <button
+                  className={`px-4 py-2  font-semibold rounded-full flex items-center justify-center ${
+                    activeIndex === index ? 'text-white' : 'text-[#252525]'
+                  }`}
+                >
                   {course.buttonText}
-                  <span className='ml-2'>&gt;&gt;</span> {/* Arrow icon */}
+                  {activeIndex === index ? (
+                    <img src='/active-arrows.svg' className='ms-3' alt='' />
+                  ) : (
+                    <img src='/arrows.svg' className='ms-3' alt='' />
+                  )}
                 </button>
               </motion.div>
             </motion.div>

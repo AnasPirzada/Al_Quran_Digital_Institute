@@ -1,52 +1,88 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 
 function LastFooter() {
   return (
-    <>
-      <section className='px-5 py-3'>
-        <div className=' flex justify-between'>
-          <div>
-            <h3 className='text-white'>© 2024 Smart Quran Institute</h3>
+    <motion.section
+      className='px-5 py-3 bg-[#1C8E5A]' // Background color for visibility
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <div className='flex flex-col md:flex-row  justify-between items-center gap-4 text-white'>
+        {/* Text Section */}
+        <div>
+          <div className='text-center md:text-left'>
+            <h3 className='text-sm md:text-base'>
+              © 2024 Smart Quran Institute
+            </h3>
           </div>
-
-          <div className='flex'>
+        </div>
+        <div className='flex gap-4'>
+          {/* Social Media Links */}
+          <div className='flex gap-4'>
             <a
               href='http://youtube.com/channel/UCuIPXx106-Ifvq6VD3ecJ4A'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/Youtube.svg' className='w-10' alt='' />
-            </a>{' '}
+              <img
+                src='/youtube_lastfooter.svg'
+                className='w-8 md:w-10'
+                alt='YouTube'
+              />
+            </a>
             <a
               href='https://join.skype.com/invite/BOf0VvMKyAVe'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/skype.svg' className='w-10' alt='' />
-            </a>{' '}
+              <img
+                src='/skype_lastfooter.svg'
+                className='w-8 md:w-10'
+                alt='Skype'
+              />
+            </a>
             <a
               href='https://www.instagram.com/alquran.digital.institute'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/instagram.svg' className='w-10' alt='' />
+              <img
+                src='/instagram-lastfooter.svg'
+                className='w-8 md:w-10'
+                alt='Instagram'
+              />
             </a>
-            {/* <img src='' className='w-10' alt='' /> */}
             <a
               href='https://www.facebook.com/profile.php?id=100083203658283'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/facebook-logo.svg' className='w-10' alt='' />
+              <img
+                src='/facebook-lastfooter.svg'
+                className='w-8 md:w-10'
+                alt='Facebook'
+              />
             </a>
           </div>
-          <div className=' flex gap-3'>
-            <img src='/logos_mastercard.png' alt='logo' />
-            <img src='/Layer_1.png' alt='logo' />
+
+          {/* Payment Logos */}
+          <div className='flex  gap-3'>
+            <img
+              src='/logos_mastercard.png'
+              className='w-10 md:w-12'
+              alt='MasterCard'
+            />
+            <img
+              src='/Layer_1.png'
+              className='w-10 md:w-12'
+              alt='Payment Logo'
+            />
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </motion.section>
   );
 }
 

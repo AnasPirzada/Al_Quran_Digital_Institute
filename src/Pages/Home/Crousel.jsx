@@ -23,9 +23,9 @@ const Carousel = () => {
       bgImageMobile: "bg-[url('/Frame-417.png')]",
     },
     {
-      title: 'Quran Online Classes UK',
+      title: 'Quran Online Classes',
       description:
-        'Experience engaging Quran classes online in the UK, tailored for your convenience and spiritual growth!',
+        'Experience engaging Quran classes online , tailored for your convenience and spiritual growth!',
       bgImageDesktop: "bg-[url('/Frame-418.png')]",
       bgImageMobile: "bg-[url('/Frame-418.png')]",
     },
@@ -83,7 +83,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className='relative h-[75vh] w-full md:h-[100vh] overflow-hidden'>
+    <div className='relative h-[75vh] w-full md:h-[80vh] overflow-hidden'>
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -134,7 +134,9 @@ const Carousel = () => {
 
           {/* Social Media Icons */}
           <motion.div
-            className='absolute right-0 top-[30%] md:top-1/2 transform -translate-y-1/2 space-y-4 mr-4'
+            className={`absolute right-0  top-[45%] md:top-[30%] transform -translate-y-1/2 ${
+              isMobile ? 'flex-row space-x-6' : 'flex-col space-y-4'
+            } flex mr-4`}
             variants={iconVariants}
             initial='hidden'
             animate='visible'
@@ -154,6 +156,13 @@ const Carousel = () => {
             >
               <img src='/skype.svg' className='w-10' alt='Skype' />
             </a>
+            <a
+              href='https://wa.me/447577655475?text='
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src='/whtsapp-crousel.svg' className='w-10' alt='whtsapp' />
+            </a>{' '}
             <a
               href='https://www.instagram.com/alquran.digital.institute'
               target='_blank'
