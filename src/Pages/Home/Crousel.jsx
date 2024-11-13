@@ -87,7 +87,7 @@ const Carousel = () => {
       {slides.map((slide, index) => (
         <motion.div
           key={index}
-          className={`absolute w-50 mt-12 md:mt-0 md:w-full md:h-full ${
+          className={`absolute w-50 md:w-full md:h-full ${
             isMobile ? 'bg-contain bg-no-repeat' : 'bg-cover'
           } flex items-center justify-between ${
             currentIndex === index ? 'block' : 'hidden'
@@ -98,7 +98,7 @@ const Carousel = () => {
           transition={{ duration: 1 }}
           variants={bgVariants}
         >
-          <div className='text-left text-white px-4 pt-48 md:pt-0 w-full md:w-[40%]'>
+          <div className='text-left text-white px-4 pt-60 md:pt-0 w-full md:w-[40%]'>
             <motion.h2
               key={`title-${currentIndex}`}
               className='text-2xl md:text-4xl font-bold text-[#1A1A1A]'
@@ -134,7 +134,7 @@ const Carousel = () => {
 
           {/* Social Media Icons */}
           <motion.div
-            className={`absolute right-0  top-[-12%] md:top-[30%] transform -translate-y-1/2 ${
+            className={`absolute left-3 md:right-0  top-[45%] md:top-[30%] transform -translate-y-1/2 ${
               isMobile ? 'flex-row space-x-6' : 'flex-col space-y-4'
             } flex mr-4`}
             variants={iconVariants}
@@ -147,35 +147,35 @@ const Carousel = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/Youtube.svg' className='w-10' alt='YouTube' />
+              <img src='/Youtube.svg' className='w-6 md:w-10' alt='YouTube' />
             </a>
             <a
               href='https://join.skype.com/invite/BOf0VvMKyAVe'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/skype.svg' className='w-10' alt='Skype' />
+              <img src='/skype.svg' className='w-6 md:w-10' alt='Skype' />
             </a>
             <a
               href='https://wa.me/447577655475?text='
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/whtsapp-crousel.svg' className='w-10' alt='whtsapp' />
+              <img src='/whtsapp-crousel.svg' className='w-6 md:w-10' alt='whtsapp' />
             </a>{' '}
             <a
               href='https://www.instagram.com/alquran.digital.institute'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/instagram.svg' className='w-10' alt='Instagram' />
+              <img src='/instagram.svg' className='w-6 md:w-10' alt='Instagram' />
             </a>
             <a
               href='https://www.facebook.com/profile.php?id=100083203658283'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/facebook-logo.svg' className='w-10' alt='Facebook' />
+              <img src='/facebook-logo.svg' className='w-6 md:w-10' alt='Facebook' />
             </a>
           </motion.div>
         </motion.div>
