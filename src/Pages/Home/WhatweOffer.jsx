@@ -60,12 +60,12 @@ const WhatweOffer = () => {
   };
 
   return (
-    <div className='relative bg-[#3F3322] px-0 md:px-10'>
+    <div className='relative bg-[#3F3322] h-auto  md:h-[150vh] px-0 md:px-10'>
       {/* Background image outside cards */}
-      <div className="absolute inset-0 bg-[url('/what-we-offer.png')] h-auto bg-cover bg-no-repeat bg-center z-0 opacity-40 hidden md:block"></div>
+      <div className="absolute inset-0 bg-[url('/what-we-offer.png')] bg-cover bg-no-repeat bg-center z-0 opacity-40 hidden md:block"></div>
 
       {/* Section Header */}
-      <div className='relative z-10 text-center py-4'>
+      <div className='relative z-10 text-center md:py-32'>
         <p className='text-yellow-400 font-bold text-lg'>WHAT WE OFFER</p>
         <p className='text-white text-2xl font-bold'>
           We Deliver Top-Quality Arabic & Quran Instruction
@@ -105,7 +105,7 @@ const WhatweOffer = () => {
               </div>
 
               {/* Card Content */}
-              <div className='bg-white shadow-lg rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden'>
+              <div className='bg-white h-[269px] shadow-lg rounded-[30px_30px_0px_0px] p-6 relative overflow-hidden'>
                 <div className='flex justify-end items-start w-full'>
                   <img src='/Card-right.png' alt='' />
                 </div>
@@ -122,7 +122,7 @@ const WhatweOffer = () => {
               {/* Enroll Button */}
               <motion.div
                 className={`transition-transform p-2 ${
-                  activeIndex === index ? 'bg-[#1C8E5A]' : 'bg-[#E1E1E1]'
+                  activeIndex === index ? 'bg-[#1C8E5A]' : 'bg-[#1C8E5A]'
                 } hover:bg-[#1C8E5A]`} // Highlight selected button
                 onClick={() => {
                   setSelectedCourse(course);

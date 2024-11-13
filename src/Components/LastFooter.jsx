@@ -14,7 +14,7 @@ function LastFooter() {
         <div>
           <div className='text-center md:text-left'>
             <h3 className='text-sm md:text-base'>
-              © 2024 Smart Quran Institute
+              © 2024 Al Quran Digital Institute
             </h3>
           </div>
         </div>
