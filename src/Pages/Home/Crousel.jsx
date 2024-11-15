@@ -134,7 +134,7 @@ const Carousel = () => {
 
           {/* Social Media Icons */}
           <motion.div
-            className={`absolute left-3 md:right-0  top-[45%] md:top-[30%] transform -translate-y-1/2 ${
+            className={`absolute right-13 md:right-0  top-[45%] md:top-[30%] transform -translate-y-1/2 ${
               isMobile ? 'flex-row space-x-6' : 'flex-col space-y-4'
             } flex mr-4`}
             variants={iconVariants}
@@ -161,21 +161,33 @@ const Carousel = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/whtsapp-crousel.svg' className='w-6 md:w-10' alt='whtsapp' />
+              <img
+                src='/whtsapp-crousel.svg'
+                className='w-6 md:w-10'
+                alt='whtsapp'
+              />
             </a>{' '}
             <a
               href='https://www.instagram.com/alquran.digital.institute'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/instagram.svg' className='w-6 md:w-10' alt='Instagram' />
+              <img
+                src='/instagram.svg'
+                className='w-6 md:w-10'
+                alt='Instagram'
+              />
             </a>
             <a
               href='https://www.facebook.com/profile.php?id=100083203658283'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src='/facebook-logo.svg' className='w-6 md:w-10' alt='Facebook' />
+              <img
+                src='/facebook-logo.svg'
+                className='w-6 md:w-10'
+                alt='Facebook'
+              />
             </a>
           </motion.div>
         </motion.div>
